@@ -1,9 +1,11 @@
 @extends('layout2.main')
+<script type="text/javascript"  src="../../../ckeditor/ckeditor.js"></script>
+<script type="text/javascript"  src="../../../ckfinder/ckfinder.js"></script>
 @section('content')
 <div class="portlet light">
 	<div class="portlet-title">
 		<div class="caption font-red-sunglo">
-			<span class="caption-subject bold uppercase">Thêm bài viết</span>
+			<span class="caption-subject bold uppercase">Sửa bài viết</span>
 		</div>
 		<div class="actions">
 			<a class="btn btn-circle btn-icon-only blue" href="javascript:;">
@@ -20,21 +22,17 @@
 		</div>
 	</div>
 	<div class="portlet-body form" style="height: auto;">
-		<form action="" method="post" enctype="multipart/form-data">
+		<form action="{{route('post.edit', ['id' => $model->id])}}" method="post" enctype="multipart/form-data">
 			@csrf
 			<div class="form-body">
-				<!-- <div class="form-group form-md-line-input has-success form-md-floating-label">
-					<div class="input-icon">
-						<input type="text" name="title" value="" class="form-control">
-						<label for="form_control_1">Tên bài viết</label>
-						<span class="help-block">Mời bạn nhập tên bài viết</span>
-						<i class="fa fa-bell-o"></i>
+				<div class="form-group form-md-line-input has-success form-md-floating ">
+					<div class="input-icon right">
+						<label for="form_control_1">Trạng thái bài viết</label>
+						<select name="status" class="form-control">
+							<option value="2">Duyệt bài viết</option>
+						</select>
 					</div>
-				</div> -->
-				<textarea id="demo" class="form-control cheditor" rows="5" name="noidung"></textarea>
-				<script type="text/javascript">
-					CKEDITOR.replace("demo");
-				</script>
+				</div>
 			</div>
 			<div class="form-actions noborder">
 				<button type="submit" class="btn blue">Gửi thông tin</button>
@@ -43,4 +41,5 @@
 		</form>
 	</div>
 </div>
+
 @endsection

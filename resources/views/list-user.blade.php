@@ -34,7 +34,7 @@
             <div class="portlet box green">
               <div class="portlet-title">
                 <div class="caption">
-                  <i class="fa fa-picture"></i>Danh sách liên hệ
+                  <i class="fa fa-picture"></i>Danh sách tài khoản
                 </div>
                 <div class="tools">
                   <a href="javascript:;" class="collapse" data-original-title="" title="">
@@ -55,59 +55,74 @@
                        ID
                     </th>
                     <th>
-                       Tên danh mục
+                       Họ và tên
                     </th>
                     <th>
-                       Mô tả
+                       Ảnh đại diện
                     </th>
                     <th>
-                       Loại danh mục
+                       Số điện thoại
                     </th>
                     <th>
-                      Trạng thái
+                       Email
                     </th>
                     <th>
-                     <a href="{{route('category.add')}}" class="btn default btn-xs blue">
-                      <i class="fa fa-plus"></i> Thêm</a>
+                       Địa chỉ
+                    </th>
+                    <th>
+                       Giới Tính
+                    </th>
+                    <th>
+                      Điểm đánh giá
+                    </th>
+                    <th>
+                      Quyền
+                    </th>
+                    <th>
+                      <a href="{{route('user.add')}}" class="btn default btn-xs blue">
+                      <i class="fa fa-plus"></i>Thêm</a>
                     </th>
                   </tr>
                 </thead>
-                @foreach($danhmuc as $lh)
+                @foreach($taikhoan as $tk)
                 <tbody>
                 <tr>
                     <td>
-                       {{$lh->id}}
+                       {{$tk->id}}
                     </td>
                     <td>
-                       {{$lh->name}}
+                       {{$tk->name}}
                     </td>
                     <td>
-                       {{$lh->description}}
+                       {{$tk->image}}
                     </td>
                     <td>
-                       @if($lh->category_type == 0)
-                       Sản Phẩm
-                       @elseif($lh->category_type==1)
-                       Bài viết
-                       @endif
+                       {{$tk->phone_number}}
                     </td>
                     <td>
-                      @if($lh->status == 0)
-                       <p class="label label-sm label-warning">Ẩn danh mục</p>
-                      @elseif($lh->status == 1)
-                       <p class="label label-sm label-success">Hiển thị</p>
-                      @endif
+                       {{$tk->email}}
+                    </td>
+                    <td>{{$tk->address}}</td>
+                    <td>
+                       {{$tk->gender}}
                     </td>
                     <td>
-                      <a href="{{route('category.edit', ['id' => $lh->id])}}" class="btn default btn-xs green">
+                       {{$tk->rate_star}}
+                    </td>
+                    <td>
+                       {{$tk->role}}
+                    </td>
+                    <td>
+                      <a href="{{route('user.edit', ['id' => $tk->id])}}" class="btn default btn-xs green">
                       <i class="fa fa-edit"></i> Sửa </a>
-                      <a href="javascript:;" linkurl="{{route('category.remove', ['id' => $lh->id])}}" class="btn default btn-xs red xoa"><i class="fa fa-trash-o"></i> Xóa </a>
+                      <a href="javascript:;" linkurl="{{route('user.remove', ['id' => $tk->id])}}" class="btn default btn-xs red xoa">
+                      <i class="fa fa-trash-o"></i> Xóa </a>
                     </td>
                   </tr>
                 </tbody>
                 @endforeach
                 <tr>
-                  <td colspan="13" class="text-center">{{$danhmuc->links()}}</td>
+                  <td colspan="13" class="text-center">{{$taikhoan->links()}}</td>
                 </tr>
                 </table>
             </div>

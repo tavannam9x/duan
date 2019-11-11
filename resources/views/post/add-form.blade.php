@@ -64,7 +64,10 @@
 					<div class="input-icon right">
 						<textarea id="demo" class="form-control cheditor" rows="5" value="" name="description" style="margin-top: 10px;"></textarea>
 						<script type="text/javascript">
-							CKEDITOR.replace("demo");
+							CKEDITOR.replace("demo", {
+					          uiColor: '#14B8C4',
+					       });
+							
 						</script>
 					</div>
 				</div>
@@ -98,14 +101,7 @@
 						<i class="icon-user"></i>
 					</div>
 				</div>
-				<div class="form-group form-md-line-input has-success form-md-floating-label">
-					<div class="input-icon right">
-						<input type="text" name="status" value="" class="form-control">
-						<label for="form_control_1">Trạng thái bài viết</label>
-						<span class="help-block">Mời bạn nhập trạng thái bài viết</span>
-						<i class="icon-user"></i>
-					</div>
-				</div>
+				<input type="hidden" value="1" name="status">
 			</div>
 			<div class="form-actions noborder">
 				<button type="submit" class="btn blue">Gửi thông tin</button>

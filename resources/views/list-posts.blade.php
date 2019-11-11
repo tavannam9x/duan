@@ -1,4 +1,5 @@
 @extends('layout2.main')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.8/jquery.slimscroll.min.js" type="text/javascript"></script>
 @section('content')
 
 <div class="all" >
@@ -34,7 +35,7 @@
             <div class="portlet box green">
               <div class="portlet-title">
                 <div class="caption">
-                  <i class="fa fa-picture"></i>Danh sách sản phẩm
+                  <i class="fa fa-picture"></i>Danh sách bài viết
                 </div>
                 <div class="tools">
                   <a href="javascript:;" class="collapse" data-original-title="" title="">
@@ -54,10 +55,10 @@
                     <th>
                        ID
                     </th>
-                    <th style="width: 50px;">
+                    <th>
                        Tiêu đề bài viết
                     </th>
-                    <th style="width: 50px;">
+                    <th>
                        Ảnh bài viết
                     </th>
                     <th>
@@ -93,13 +94,13 @@
                     <td>
                        {{$bv->id}}
                     </td>
-                    <td>
+                    <td style="width: 100px;">
                        {{$bv->title}}
                     </td>
                     <td>
-                       <img src="{{$bv->image}}" width="200">
+                       <img src="{{$bv->image}}" style="width: 200px;">
                     </td>
-                    <td>
+                    <td style="width: 200px;">
                        {{$bv->short_desc}}
                     </td>
                     <td>
@@ -110,20 +111,16 @@
                     <td>
                        {{$bv->views}}
                     </td>
-                    <td style="
-                        dibvlay:block;
-                        padding:5px;
-                        margin-top:5px;
-                        width:150px;
-                        
-                        overflow:scroll;
-                        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-                        border-radius: 10px;
-                        background-color: #F5F5F5;
-                        border-radius: 10px;
-                        ">
+                    <!-- <td style="width: 300px;">
                         {!!$bv->description!!}
                       
+                    </td> -->
+                    <td style="width: 400px;">
+                      <div class="portlet-body" style="width: 400px;">
+                      <div class="scroller" style="height:200px;" data-rail-visible="1" data-rail-color="yellow" data-handle-color="#a1b2bd">
+                        {!!$bv->description!!}
+                      </div>
+                    </div>
                     </td>
                     <!-- <td style="overflow: scroll; height: 100px;">
                     {!!$bv->description!!}
@@ -132,7 +129,13 @@
                        {{$bv->date}}
                     </td>
                     <td>
-                       {{$bv->status}}
+                      @if($bv->status == 1)
+                       <p class="label label-sm label-warning">Đang chờ duyệt</p>
+                       <a href="{{route('post.edits', ['id' => $bv->id])}}" class="btn default btn-xs green">
+                       <i class="fa fa-edit"></i> Sửa </a>
+                      @elseif($bv->status == 2)
+                       <p class="label label-sm label-success">Đã duyệt</p>
+                      @endif
                     </td>
                     <td>
                        {{$bv->author}}
@@ -157,4 +160,22 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  $(selector).slimScroll({
+    width: '300px',
+    height: '500px',
+    size: '10px',
+    position: 'left',
+    color: '#ffcc00',
+    alwaysVisible: true,
+    distance: '20px',
+    start: $('#child_image_element'),
+    railVisible: true,
+    railColor: '#222',
+    railOpacity: 0.3,
+    wheelStep: 10,
+    allowPageScroll: false,
+    disableFadeOut: false
+    });
+</script>
 @endsection();

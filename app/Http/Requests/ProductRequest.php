@@ -46,7 +46,7 @@ class ProductRequest extends FormRequest
             'description' =>[
                 'required',
                 'min:20',
-                'max:2000'
+                'max:10000'
             ]
 
 
@@ -77,7 +77,7 @@ class ProductRequest extends FormRequest
             'short_desc.max' => 'Nội dung tóm tắt phải nhỏ hơn 300 ký tự',
             'description.required' => 'Bạn phải nhập nội dung sản phẩm',
             'description.min' => 'Nội dung sản phẩm phải lớn hơn 20 ký tự',
-            'description.max' => 'Nội dung sản phẩm phải nhỏ hơn 2000 ký tự',
+            'description.max' => 'Nội dung sản phẩm phải nhỏ hơn 10000 ký tự',
             'expiry_date.required' => 'Bạn phải nhập hạn sử dụng',
         ];
 

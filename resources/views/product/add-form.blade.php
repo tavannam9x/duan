@@ -1,5 +1,6 @@
 @extends('layout2.main')
-
+<script type="text/javascript"  src="../../../ckeditor/ckeditor.js"></script>
+<script type="text/javascript"  src="../../../ckfinder/ckfinder.js"></script>
 @section('content')
 <div class="portlet light">
 	<div class="portlet-title">
@@ -69,21 +70,24 @@
 						@endif
 					</div>
 				</div>
+				<span class="form_control">Nội dung chi tiết bài viết:</span>
 				<div class="form-group form-md-line-input has-success form-md-floating-label">
 					<div class="input-icon right">
-						<input type="text" name="description" value="" class="form-control">
-						<label for="form_control_1">Chi tiết sản phẩm</label>
-						@if($errors->first('description'))
-						<span class="text-danger">{{$errors->first('description')}}</span>
-						@endif
+						<textarea id="demo" class="form-control cheditor" rows="5" value="" name="description" style="margin-top: 10px;"></textarea>
+						<script type="text/javascript">
+							CKEDITOR.replace("demo");
+						</script>
 					</div>
+					@if($errors->first('description'))
+					<span class="text-danger">{{$errors->first('description')}}</span>
+					@endif
 				</div>
 				
 				<div class="form-group form-md-line-input has-success form-md-floating-label">
 					<div class="input-icon right">
 						<label for="form_control_1">Danh mục</label>
 						<select name="category_id" class="form-control">
-							@foreach ($cates as $ca)
+							@foreach ($category_product as $ca)
 							<option value="{{$ca->id}}">{{$ca->name}}</option>
 							@endforeach
 						</select>

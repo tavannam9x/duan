@@ -4,7 +4,7 @@ namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 use App\http\Middleware\ModeratorRole;
-
+use App\http\Middleware\ModeratorRoleAdmin;
 class Kernel extends HttpKernel
 {
     /**
@@ -61,7 +61,8 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'mod.check'=> ModeratorRole::class
+        'mod.check'=> ModeratorRole::class,
+        'modedit.check'=> ModeratorRoleAdmin::class,
     ];
 
     /**

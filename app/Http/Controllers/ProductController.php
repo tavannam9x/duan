@@ -22,8 +22,8 @@ class ProductController extends Controller
     public function addNew(){
         $model = new Product();
         $products = Product::all();
-        $cates = Category::all();
-        return view('product.add-form',compact('model', 'products', 'cates'));
+        $category_product= Category::where('category_type','=','0')->get();
+        return view('product.add-form',compact('model', 'products', 'category_product'));
     }
 
     public function saveAddNew(ProductRequest $request){

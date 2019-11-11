@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Nền tảng quản lý & bán hàng tốt nhất cho bạn</title>
-
-
-    <!-- Link cdn fontawesome -->
-    <link rel="stylesheet" href="  https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+<link rel="stylesheet" href="  https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 
     <!-- Link Getbootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -38,36 +27,3 @@
     <!-- <script language="javascript">
         alert('Xin chào các bạn');
     </script> -->
-
-</head>
-
-<?php
-use App\Http\Requests\UserRequest;
-?>
-<body>
-
-    <div class="main-background">
-        @include('shop.header')
-    </div>
-
-    <div class="container">
-        <div class="loginbox">
-            <img src="../../../shop/image/produc-dautay-banchuan.jpg" class="avatar">
-            <h1 style="margin-bottom: 20px;"> Tạo tài khoản </h1>
-            <form action="{{route('dangki.add')}}" method="post" enctype="multipart/form-data">
-                @csrf
-                <input type="name" style="font-size: 13px;" value="" name="name" placeholder="Tên">
-                <input type="email" style="font-size: 13px;" value="" name="email" placeholder="Email">
-                <input type="password" style="font-size: 13px;" value="" name="password" placeholder="Mật khẩu">
-                <input type="cf_password" style="font-size: 13px;" value="" placeholder="Nhập lại mật khẩu">
-                <input type="hidden" name="role" value="1">
-                <button type="submit" name="">Đăng kí</button>
-                <p>
-                    <a href="home.html"> Trở về </a>
-                </p>
-            </form>
-        </div>
-    </div>
-</body>
-
-</html>

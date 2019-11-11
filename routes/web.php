@@ -68,14 +68,17 @@ Route::get('/admin2', function(){
 
 });
 
-Route::get('trangchu', 'TrangchuController@index')->name('trangchu');
-Route::get('sanpham/{id}', 'TrangchuController@sanpham')->name('sanpham');
+// Route::get('/', 'TrangchuController@index')->name('trangchu');
+// Route::get('sanpham/{id}', 'TrangchuController@sanpham')->name('sanpham');
+// Route::get('tintuc/{id}', 'TrangchuController@tintuc')->name('tintuc');
+
 
 
 Route::get('/dangki', 'DangkiController@addNew')->name('dangki.add');
 Route::post('/dangki', 'DangkiController@saveAddnew');
 Route::get('/dangnhap', 'DangkiController@Login')->name('dangnhap.add');
 Route::post('/dangnhap', 'DangkiController@postLogin');
+Route::get('/dangxuat', 'DangkiController@Logout')->name('logoutUser');
 
 Route::get('cp-login', 'Auth\LoginController@loginForm')->name('login');
 Route::post('cp-login', 'Auth\LoginController@postLogin');

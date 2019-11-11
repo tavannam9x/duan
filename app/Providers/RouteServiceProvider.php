@@ -50,6 +50,8 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapEventRoutes();
         $this->mapCategoryRoutes();
         $this->mapPostsRoutes();
+        $this->mapWebsite();
+        $this->mapUser();
 
 
         //
@@ -79,7 +81,7 @@ class RouteServiceProvider extends ServiceProvider
 
     protected function mapPostRoutes()
     {
-        Route::middleware('web','auth','mod.check')
+        Route::middleware('web','auth','modedit.check')
              ->prefix('admin2/post')
              ->namespace($this->namespace)
              ->group(base_path('routes/post.php'));
@@ -132,6 +134,21 @@ class RouteServiceProvider extends ServiceProvider
              ->prefix('admin2/tintuc')
              ->namespace($this->namespace)
              ->group(base_path('routes/tintuc.php'));
+    }
+    protected function mapWebsite()
+    {
+        Route::middleware('web')
+             ->prefix('/')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/website.php'));
+    }
+
+    protected function mapUser()
+    {
+        Route::middleware('web','auth','mod.check')
+             ->prefix('admin2/taikhoan')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/user.php'));
     }
 
     /**

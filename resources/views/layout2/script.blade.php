@@ -1,4 +1,4 @@
-<script src="../../../adminltes/assets/admin/pages/scripts/index3.js" type="text/javascript"></script>
+<script src="../../adminltes/assets/admin/pages/scripts/index3.js" type="text/javascript"></script>
 
 <script src="../../../adminltes/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
 <script src="../../../adminltes/assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>

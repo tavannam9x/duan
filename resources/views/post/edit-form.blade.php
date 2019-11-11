@@ -59,14 +59,7 @@
 						</script>
 					</div>
 				</div>
-				<div class="form-group form-md-line-input has-success form-md-floating ">
-					<div class="input-icon right">
-						<input type="text" name="views" value="{{old('views', $model->views)}}" class="form-control">
-						<label for="form_control_1">Lượt Xem</label>
-						<span class="help-block">Mời bạn nhập lượt xem</span>
-						<i class="icon-user"></i>
-					</div>
-				</div>
+				<input type="hidden" name="views" value="{{old('views', $model->views)}}" class="form-control">
 				<div class="form-group form-md-line-input has-success form-md-floating ">
 					<div class="input-icon right">
 						<label for="form_control_1">Danh mục</label>
@@ -82,14 +75,7 @@
 					</div>
 				</div>
 				
-				<div class="form-group form-md-line-input has-success form-md-floating ">
-					<div class="input-icon right">
-						<input type="text" name="date" value="{{old('date', $model->date)}}" class="form-control">
-						<label for="form_control_1">Ngày xuất bản</label>
-						<span class="help-block">Mời bạn nhập ngày xuất bản</span>
-						<i class="icon-user"></i>
-					</div>
-				</div>
+				<input type="hidden" name="date" value="{{old('date', $model->date)}}" class="form-control">
 				<div class="form-group form-md-line-input has-success form-md-floating ">
 					<div class="input-icon right">
 						<input type="text" name="author" value="{{old('author', $model->author)}}" class="form-control">
@@ -98,14 +84,7 @@
 						<i class="icon-user"></i>
 					</div>
 				</div>
-				<div class="form-group form-md-line-input has-success form-md-floating ">
-					<div class="input-icon right">
-						<input type="text" name="status" value="{{old('status', $model->status)}}" class="form-control">
-						<label for="form_control_1">Trạng thái bài viết</label>
-						<span class="help-block">Mời bạn nhập trạng thái bài viết</span>
-						<i class="icon-user"></i>
-					</div>
-				</div>
+				<input type="hidden" name="status" value="{{old('status', $model->status)}}" class="form-control">
 			</div>
 			<div class="form-actions noborder">
 				<button type="submit" class="btn blue">Gửi thông tin</button>

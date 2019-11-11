@@ -50,11 +50,21 @@ class PostController extends Controller
             return redirect()->route('homepost');
         }
         $posts = Post::all();
-        $cates = Category::all();
+        $cates= Category::where('category_type','=','1')->get();
         return view('post.edit-form', compact('model', 'posts', 'cates'));
+    }
+    public function editStatus($id){
+        $model = Post::find($id);
+        if(!$model){
+            return redirect()->route('homepost');
+        }
+        $posts = Post::all();
+        $cates = Category::all();
+        return view('post.edit-status', compact('model', 'posts', 'cates'));
     }
     public function saveEdit(Request $request){
         $model = Post::find($request->id);
+        $dt = Carbon::now();
         if($request->hasFile('image')){
             $path = $request->file('image')->storeAs('products', 
             str_replace(' ', '-', uniqid() . '-' .$request->image->getClientOriginalName()));
@@ -62,6 +72,8 @@ class PostController extends Controller
         }
         if($request->status == null){
             $model->status = 0;
+        }else if($request->status == 1){
+            $model->date = $dt->toDateString();
         }
         $model->fill($request->all());
         $model->save();

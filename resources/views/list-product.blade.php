@@ -75,10 +75,7 @@
                     Danh Mục
                   </th>
                   <th>
-                    Số lượng người xem
-                  </th>
-                  <th>
-                    Số lượng còn lại
+                    Lượt xem
                   </th>
                   <th>
                     Trang thái
@@ -101,8 +98,8 @@
                   <td>
                      {{$sp->name}}
                   </td>
-                  <td>
-                     <img src="{{$sp->image}}" width="200">
+                  <td style="width: 130px;">
+                     <img src="{{$sp->image}}" style="width: 130px;">
                   </td>
                   <td>
                      {{$sp->list_price}}
@@ -110,23 +107,15 @@
                   <td>
                      {{$sp->sell_price}}
                   </td>
-                  <td>
+                  <td style="width: 200px;">
                      {{$sp->short_desc}}
                   </td>
-                  <td style="
-                      display:block;
-                      padding:5px;
-                      margin-top:5px;
-                      width:250px;
-                      height:200px;
-                      overflow:scroll;
-                      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-                      border-radius: 10px;
-                      background-color: #F5F5F5;
-                      border-radius: 10px;
-                      ">
-                      {{$sp->description}}
-                    
+                  <td style="width: 400px;">
+                      <div class="portlet-body" style="width: 400px;">
+                      <div class="scroller" style="height:200px;" data-rail-visible="1" data-rail-color="yellow" data-handle-color="#a1b2bd">
+                        {!!$sp->description!!}
+                      </div>
+                  </div>
                   </td>
                   <td>
                      @isset($sp->product->name)
@@ -137,10 +126,13 @@
                      {{$sp->views}}
                   </td>
                   <td>
-                     {{$sp->amount}}
-                  </td>
-                  <td>
-                     {{$sp->status}}
+                     @if($sp->status == 0)
+                       Đang chờ duyệt
+                       <a href="{{route('post.edits', ['id' => $sp->id])}}" class="btn default btn-xs green">
+                       <i class="fa fa-edit"></i> Sửa </a>
+                       @elseif($sp->status == 1)
+                       Đã đăng
+                       @endif
                   </td>
                   <td>
                      {{$sp->expiry_date}}

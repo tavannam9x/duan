@@ -36,6 +36,25 @@
 						</li>
 					</ul>
 				</li>
+				<li>
+					<a href="javascript:;">
+					<i class="fa fa-group"></i>
+					<span class="title">Quản lý tài khoản</span>
+					<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li>
+							<a href="{{route('adminsuper')}}">
+							<i class="fa fa-home"></i>
+							Danh sách tài khoản</a>
+						</li>
+						<li>
+							<a href="{{route('user.add')}}">
+							<i class="fa fa-plus-square"></i>
+							Thêm sản phẩm</a>
+						</li>
+					</ul>
+				</li>
 				<!-- BEGIN ANGULARJS LINK 
 				<li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="AngularJS version demo">
 					<a href="angularjs" target="_blank">
