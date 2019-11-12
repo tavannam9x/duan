@@ -127,12 +127,12 @@
                   </td>
                   <td>
                      @if($sp->status == 0)
-                       Đang chờ duyệt
-                       <a href="{{route('post.edits', ['id' => $sp->id])}}" class="btn default btn-xs green">
-                       <i class="fa fa-edit"></i> Sửa </a>
-                       @elseif($sp->status == 1)
-                       Đã đăng
-                       @endif
+                     <p class="label label-sm label-warning">Đang chờ duyệt</p>
+                     <a href="{{route('product.edits', ['id' => $sp->id])}}" class="btn default btn-xs green">
+                     <i class="fa fa-edit"></i> Sửa </a>
+                    @elseif($sp->status == 1)
+                     <p class="label label-sm label-success">Đã duyệt</p>
+                    @endif
                   </td>
                   <td>
                      {{$sp->expiry_date}}

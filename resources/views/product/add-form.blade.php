@@ -26,7 +26,7 @@
 			@csrf
 			<div class="form-body">
 				<div class="form-group form-md-line-input has-success form-md-floating">
-					<div class="input-icon">
+					<div class="input">
 						<input type="text" name="name" value="" class="form-control">
 						<label for="form_control">Tên sản phẩm</label>
 						@if($errors->first('name'))
@@ -103,13 +103,7 @@
 						@endif
 					</div>
 				</div>
-				<div class="form-group form-md-line-input has-success form-md-floating-label">
-					<div class="checkbox">
-					    <label>
-					    	<input type="checkbox" name="status" value="1"> Trạng thái
-					    </label>
-					</div>
-				</div>
+				<input type="hidden" name="status" value="0">
 			</div>
 			<div class="form-actions noborder">
 				<button type="submit" class="btn blue">Gửi thông tin</button>

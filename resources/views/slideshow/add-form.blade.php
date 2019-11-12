@@ -23,14 +23,14 @@
 		<form action="{{route('slideshow.add')}}" method="post" enctype="multipart/form-data">
 			@csrf
 			<div class="form-body">
-				<div class="form-group form-md-line-input has-success form-md-floating-label">
+				<!-- <div class="form-group form-md-line-input has-success form-md-floating-label">
 					<div class="input-icon">
 						<input type="text" name="Name" value="" class="form-control">
 						<label for="form_control_1">Tên slideshow</label>
 						<span class="help-block">Mời bạn nhập tên slideshow</span>
 						<i class="fa fa-bell-o"></i>
 					</div>
-				</div>
+				</div> -->
 				<div class="form-group form-md-line-input has-success form-md-floating-label">
 					<div class="input-icon">
 						<input type="file" name="image" value="" class="form-control">
@@ -44,14 +44,6 @@
 						<input type="text" name="description" value="" class="form-control">
 						<label for="form_control_1">Mô tả slideshow</label>
 						<span class="help-block">Mời bạn nhập mô tả slideshow</span>
-						<i class="icon-user"></i>
-					</div>
-				</div>
-				<div class="form-group form-md-line-input has-success form-md-floating-label">
-					<div class="input-icon right">
-						<input type="text" name="link" value="" class="form-control">
-						<label for="form_control_1">Link slideshow</label>
-						<span class="help-block">Mời bạn nhập link slideshow</span>
 						<i class="icon-user"></i>
 					</div>
 				</div>

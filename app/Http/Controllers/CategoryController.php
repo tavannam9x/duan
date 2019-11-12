@@ -25,7 +25,7 @@ class CategoryController extends Controller
         return view('category.add-form', compact('model', 'product'));
     }
 
-    public function saveAddNew(Request $request){
+    public function saveAddNew(CategoryRequest $request){
         $model = new Category();
         if($request->hasFile('image')){
            
@@ -48,7 +48,7 @@ class CategoryController extends Controller
         $product = Product::all();
         return view('Category.edit-form', compact('model', 'product'));
     }
-    public function saveEdit(Request $request){
+    public function saveEdit(CategoryRequest $request){
         $model = Category::find($request->id);
         if($request->hasFile('image')){
             $path = $request->file('image')->storeAs('products', 

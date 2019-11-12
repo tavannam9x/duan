@@ -4,6 +4,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
+use App\Http\Requests\PostRequest;
 class PostController extends Controller
 {
     public function index(Request $request){
@@ -26,7 +27,7 @@ class PostController extends Controller
         $category_post= Category::where('category_type','=','1')->get();
         return view('post.add-form', compact('model', 'posts', 'category_post','category_product'));
     }
-    public function saveAddNew(Request $request){
+    public function saveAddNew(PostRequest $request){
         $model = new Post();
         $dt = Carbon::now();
         if($request->hasFile('image')){
@@ -55,14 +56,9 @@ class PostController extends Controller
     }
     public function editStatus($id){
         $model = Post::find($id);
-        if(!$model){
-            return redirect()->route('homepost');
-        }
-        $posts = Post::all();
-        $cates = Category::all();
-        return view('post.edit-status', compact('model', 'posts', 'cates'));
+        return view('post.edit-status', compact('model'));
     }
-    public function saveEdit(Request $request){
+    public function saveEdits(Request $request){
         $model = Post::find($request->id);
         $dt = Carbon::now();
         if($request->hasFile('image')){
@@ -72,7 +68,24 @@ class PostController extends Controller
         }
         if($request->status == null){
             $model->status = 0;
-        }else if($request->status == 1){
+        }elseif($request->status == 1){
+            $model->date = $dt->toDateString();
+        }
+        $model->fill($request->all());
+        $model->save();
+        return redirect(route('homepost'));
+    }
+    public function saveEdit(PostRequest $request){
+        $model = Post::find($request->id);
+        $dt = Carbon::now();
+        if($request->hasFile('image')){
+            $path = $request->file('image')->storeAs('products', 
+            str_replace(' ', '-', uniqid() . '-' .$request->image->getClientOriginalName()));
+            $model->image = '../images/'.$path;
+        }
+        if($request->status == null){
+            $model->status = 0;
+        }elseif($request->status == 1){
             $model->date = $dt->toDateString();
         }
         $model->fill($request->all());

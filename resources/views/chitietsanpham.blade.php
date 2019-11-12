@@ -8,6 +8,7 @@
     <title> Chi tiết sản phẩm </title>
 
     @include('shop.script')
+    <link rel='stylesheet prefetch' href='https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css'>
     
 </head>
 
@@ -77,6 +78,10 @@
                 <div class="col-md-6">
                     <div class="product-information">
                         <h2> {{$cate->name}} </h2>
+                        
+                        <!-- phần này là inclu cái đánh giá sao nhé-->
+                        @include('shop.dist.star')
+
                         <p> {{$cate->list_price}} VNĐ</p>
                         <p style="text-decoration:line-through;"> {{$cate->sell_price}} VNĐ</p>
                         <p> Nguồn gốc: Việt Nam </p>
@@ -100,6 +105,9 @@
             </div>
         </div>
 
+        <!-- Nếu mà có tài khoản thì mới hiển thị bình luận ở đây nhé còn nếu cái tài khoản mà null thì ẩn form này đi-->
+
+        <!-- @if(Illuminate\Support\Facades\Auth::check())
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -110,27 +118,24 @@
                                 <label for="exampleInputEmail1"> Họ tên
                                     <span style="color: red">*</span>
                                 </label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Email
-                                    <span style="color: red">*</span>
-                                </label>
-                                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="">
+                                <input type="text" class="form-control" name="name" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" value="{{ Illuminate\Support\Facades\Auth::user()->name }}" readonly="true">
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1"> Nội dung
                                     <span style="color: red">*</span>
                                 </label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder=""></textarea>
+                                <textarea class="form-control" name="comment" id="exampleFormControlTextarea1"  rows="4" placeholder=""></textarea>
                             </div>
+                            <input type="hidden" name="product_id" value="{{$cate->id}}">
                             <button type="submit" style="margin-top: 30px; margin-bottom: 30px;" class="btn btn-info">
                                 Gửi nhận xét </button>
                         </form>
+                       
                     </div>
                 </div>
             </div>
-        </div>
+        </div> 
+        @endif -->
 
         <div class="container">
             <h2 style="text-align: center; color: #306ac2;"> Sản phẩm liên quan </h2>

@@ -53,17 +53,11 @@
                   <th>
                      ID
                   </th>
-                  <th>
-                     Tên slideshow
-                  </th>
                    <th>
                      Ảnh slideshow
                   </th>
                   <th>
                      Mô tả slideshow
-                  </th>
-                  <th>
-                     Link slideshow
                   </th>
                   <th>
                      Trạng thái
@@ -84,9 +78,6 @@
                      {{$sl->id}}
                   </td>
                   <td>
-                     {{$sl->Name}}
-                  </td>
-                  <td>
                      <img src="{{$sl->image}}" width="200">
                   </td>
                   <td style="
@@ -105,10 +96,11 @@
                     
                   </td>
                   <td>
-                     {{$sl->link}}
-                  </td>
-                  <td>
-                     {{$sl->status}}
+                     @if($sl->status == 0)
+                       <p class="label label-sm label-warning">Ẩn danh mục</p>
+                      @elseif($sl->status == 1)
+                       <p class="label label-sm label-success">Hiển thị</p>
+                      @endif
                   </td>
                   <td>
                      {{$sl->order_slide}}

@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Post;
 use App\Models\Contact;
+use App\Models\Comment;
 use App\Models\User;
 class TrangchuController extends Controller
 {

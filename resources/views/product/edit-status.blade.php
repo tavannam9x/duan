@@ -5,7 +5,7 @@
 <div class="portlet light">
 	<div class="portlet-title">
 		<div class="caption font-red-sunglo">
-			<span class="caption-subject bold uppercase">Sửa bài viết</span>
+			<span class="caption-subject bold uppercase">Sửa trạng thái sản phẩm</span>
 		</div>
 		<div class="actions">
 			<a class="btn btn-circle btn-icon-only blue" href="javascript:;">
@@ -22,21 +22,21 @@
 		</div>
 	</div>
 	<div class="portlet-body form" style="height: auto;">
-		<form action="{{route('post.edits', ['id' => $model->id])}}" method="post" enctype="multipart/form-data">
+		<form action="{{route('product.edits', ['id' => $model->id])}}" method="post" enctype="multipart/form-data">
 			@csrf
 			<div class="form-body">
 				<div class="form-group form-md-line-input has-success form-md-floating ">
 					<div class="input-icon right">
-						<label for="form_control_1">Trạng thái bài viết</label>
+						<label for="form_control_1">Trạng thái sản phẩm</label>
 						<select name="status" class="form-control">
-							<option value="2">Duyệt bài viết</option>
+							<option value="1">Duyệt sản phẩm</option>
 						</select>
 					</div>
 				</div>
 			</div>
 			<div class="form-actions noborder">
 				<button type="submit" class="btn blue">Gửi thông tin</button>
-				<button type="button" class="btn green"><a href="{{route('homepost')}}" style="text-decoration: none; color: #fff;">Quay lại</a></button>
+				<button type="button" class="btn green"><a href="{{route('home')}}" style="text-decoration: none; color: #fff;">Quay lại</a></button>
 			</div>
 		</form>
 	</div>

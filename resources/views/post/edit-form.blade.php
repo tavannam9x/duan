@@ -29,24 +29,27 @@
 					<div class="input-icon">
 						<input type="text" name="title" value="{{old('title', $model->title)}}" class="form-control">
 						<label for="form_control_1">Tên bài viết</label>
-						<span class="help-block">Mời bạn nhập tên bài viết</span>
-						<i class="fa fa-bell-o"></i>
+						@if($errors->first('title'))
+						<span class="text-danger">{{$errors->first('title')}}</span>
+						@endif
 					</div>
 				</div>
 				<div class="form-group form-md-line-input has-success form-md-floating ">
 					<div class="input-icon">
 						<input type="file" name="image" value="{{old('image', $model->image)}}" class="form-control">
 						
-						<span class="help-block">Mời bạn nhập tên bài viết</span>
-						<i class="fa fa-bell-o"></i>
+						@if($errors->first('image'))
+						<span class="text-danger">{{$errors->first('image')}}</span>
+						@endif
 					</div>
 				</div>
 				<div class="form-group form-md-line-input has-success form-md-floating ">
 					<div class="input-icon right">
 						<input type="text" name="short_desc" value="{{old('short_desc', $model->short_desc)}}" class="form-control">
 						<label for="form_control_1">Nội dung tóm tắt bài viết</label>
-						<span class="help-block">Mời bạn nhập nội dung tóm tắt bài viết</span>
-						<i class="icon-user"></i>
+						@if($errors->first('short_desc'))
+						<span class="text-danger">{{$errors->first('short_desc')}}</span>
+						@endif
 					</div>
 				</div>
 				
@@ -58,6 +61,9 @@
 							CKEDITOR.replace("demo");
 						</script>
 					</div>
+					@if($errors->first('description'))
+					<span class="text-danger">{{$errors->first('description')}}</span>
+					@endif
 				</div>
 				<input type="hidden" name="views" value="{{old('views', $model->views)}}" class="form-control">
 				<div class="form-group form-md-line-input has-success form-md-floating ">
@@ -80,8 +86,9 @@
 					<div class="input-icon right">
 						<input type="text" name="author" value="{{old('author', $model->author)}}" class="form-control">
 						<label for="form_control_1">Tác giả bài viết</label>
-						<span class="help-block">Mời bạn nhập tác giả bài viết</span>
-						<i class="icon-user"></i>
+						@if($errors->first('author'))
+						<span class="text-danger">{{$errors->first('author')}}</span>
+						@endif
 					</div>
 				</div>
 				<input type="hidden" name="status" value="{{old('status', $model->status)}}" class="form-control">

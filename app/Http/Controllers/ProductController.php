@@ -51,7 +51,27 @@ class ProductController extends Controller
         $cates = Category::all();
         return view('product.edit-form',compact('model', 'products', 'cates'));
     }
+    public function editStatus($id){
+        $model = Product::find($id);
+        return view('product.edit-status',compact('model'));
+    }
     public function saveEdit(ProductRequest $request){
+        $model = Product::find($request->id);
+        if($request->hasFile('image')){
+            $path = $request->file('image')->storeAs('products', 
+            str_replace(' ', '-', uniqid() . '-' .$request->image->getClientOriginalName()));
+            $model->image = '../images/'.$path;
+        }
+        if($request->status == null){
+            $model->status = 0;
+        }
+        $model->fill($request->all());
+        //dd($model);
+        $model->save();
+        return redirect(route('home'));
+    }
+
+    public function saveEdits(Request $request){
         $model = Product::find($request->id);
         if($request->hasFile('image')){
             $path = $request->file('image')->storeAs('products', 

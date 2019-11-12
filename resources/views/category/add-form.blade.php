@@ -24,17 +24,21 @@
 			@csrf
 			<div class="form-body">
 				<div class="form-group form-md-line-input has-success form-md-floating-label">
-					<div class="input-icon">
+					<div class="input">
 						<input type="text" name="name" value="" class="form-control">
 						<label for="form_control_1">Tên danh mục</label>
-						
+						@if($errors->first('name'))
+						<span class="text-danger">{{$errors->first('name')}}</span>
+						@endif
 					</div>
 				</div>
 				<div class="form-group form-md-line-input has-success form-md-floating-label">
-					<div class="input-icon">
+					<div class="input">
 						<input type="text" name="description" value="" class="form-control">
 						<label for="form_control_1">Mô tả danh mục</label>
-						
+						@if($errors->first('description'))
+						<span class="text-danger">{{$errors->first('description')}}</span>
+						@endif
 					</div>
 				</div>
 				<div class="form-group form-md-line-input has-success form-md-floating-label">
@@ -50,8 +54,10 @@
 					<div class="input-icon right">
 						<input type="text" name="status" value="" class="form-control">
 						<label for="form_control_1">Trạng thái danh mục</label>
-						<span class="help-block">Mời bạn nhập trạng thái danh mục</span>
-						<i class="icon-user"></i>
+						<select name="category_type" class="form-control">
+							<option value="1">Hiển thị</option>
+							<option value="0">Ẩn</option>
+						</select>
 					</div>
 				</div>
 			</div>

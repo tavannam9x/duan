@@ -24,7 +24,7 @@
 			@csrf
 			<div class="form-body">
 				<div class="form-group form-md-line-input has-success form-md-floating">
-					<div class="input-icon">
+					<div class="input">
 						<input type="text" name="name" value="{{old('name', $model->name)}}" class="form-control">
 						<label>Tên sản phẩm</label>
 						@if($errors->first('name'))
@@ -33,7 +33,7 @@
 					</div>
 				</div>
 				<div class="form-group form-md-line-input has-success form-md-floating">
-					<div class="input-icon">
+					<div class="input">
 						<input type="file" name="image" value="" class="form-control">
 						<label for="form_control_1">Anh sản phẩm</label>
 						@if($errors->first('image'))

@@ -82,9 +82,6 @@ Route::get('/dangxuat', 'DangkiController@Logout')->name('logoutUser');
 
 Route::get('cp-login', 'Auth\LoginController@loginForm')->name('login');
 Route::post('cp-login', 'Auth\LoginController@postLogin');
-
-
-
 Route::any('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('403', function(){
 	return view('auth403');

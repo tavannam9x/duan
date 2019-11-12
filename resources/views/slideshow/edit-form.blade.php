@@ -23,14 +23,14 @@
 		<form action="{{route('slideshow.edit', ['id' => $model->id])}}" method="post" enctype="multipart/form-data">
 			@csrf
 			<div class="form-body">
-				<div class="form-group form-md-line-input has-success form-md-floating ">
+				<!-- <div class="form-group form-md-line-input has-success form-md-floating ">
 					<div class="input-icon">
 						<input type="text" name="Name" value="{{old('Name', $model->Name)}}" class="form-control">
 						<label for="form_control_1">Tên slideshow</label>
 						<span class="help-block">Mời bạn nhập tên slideshow</span>
 						<i class="fa fa-bell-o"></i>
 					</div>
-				</div>
+				</div> -->
 				<div class="form-group form-md-line-input has-success form-md-floating ">
 					<div class="input-icon">
 						<input type="file" name="image" value="{{old('image', $model->image)}}" class="form-control">

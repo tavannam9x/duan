@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Hash;
 class UserController extends Controller
 {
     public function index(Request $request){
@@ -33,10 +34,13 @@ class UserController extends Controller
             $path = $request->file('image')->storeAs('products', $filename);
             $model->image = '../images/'.$path;
         }
-        $model->fill($request->all());
-        // $password= $model->password;
-        // $haspw= Hash::make($password);
-        // $model->save();
+
+        $input = $request->all();
+
+        $input['password'] = Hash::make($input['password']);
+
+        $model->create($input);
+
         return redirect(route('adminsuper'));
     }
     public function editForm($id){

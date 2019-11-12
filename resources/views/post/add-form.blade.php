@@ -28,27 +28,29 @@
 			@csrf
 			<div class="form-body">
 				<div class="form-group form-md-line-input has-success form-md-floating-label">
-					<div class="input-icon">
+					<div class="input">
 						<input type="text" name="title" value="" class="form-control">
 						<label for="form_control_1">Tên bài viết</label>
-						<span class="help-block">Mời bạn nhập tên bài viết</span>
-						<i class="fa fa-bell-o"></i>
+						@if($errors->first('title'))
+						<span class="text-danger">{{$errors->first('title')}}</span>
+						@endif
 					</div>
 				</div>
 				<div class="form-group form-md-line-input has-success form-md-floating-label">
-					<div class="input-icon">
+					<div class="input">
 						<input type="file" name="image" value="" class="form-control">
-						
-						<span class="help-block">Mời bạn nhập ảnh bài viết</span>
-						<i class="fa fa-bell-o"></i>
+						@if($errors->first('image'))
+						<span class="text-danger">{{$errors->first('image')}}</span>
+						@endif
 					</div>
 				</div>
 				<div class="form-group form-md-line-input has-success form-md-floating-label">
 					<div class="input-icon right">
 						<input type="text" name="short_desc" value="" class="form-control">
 						<label for="form_control_1">Nội dung tóm tắt bài viết</label>
-						<span class="help-block">Mời bạn nhập nội dung tóm tắt bài viết</span>
-						<i class="icon-user"></i>
+						@if($errors->first('short_desc'))
+						<span class="text-danger">{{$errors->first('short_desc')}}</span>
+						@endif
 					</div>
 				</div>
 				<!-- <div class="form-group form-md-line-input has-success form-md-floating-label">
@@ -67,9 +69,11 @@
 							CKEDITOR.replace("demo", {
 					          uiColor: '#14B8C4',
 					       });
-							
 						</script>
 					</div>
+					@if($errors->first('description'))
+					<span class="text-danger">{{$errors->first('description')}}</span>
+					@endif
 				</div>
 					<input type="hidden" name="views" value="0" class="form-control">
 				</div>
@@ -92,13 +96,14 @@
 						<i class="icon-user"></i>
 					</div>
 				</div>
- -->
+ 				-->
 				<div class="form-group form-md-line-input has-success form-md-floating-label">
 					<div class="input-icon right">
 						<input type="text" name="author" value="" class="form-control">
 						<label for="form_control_1">Tác giả bài viết</label>
-						<span class="help-block">Mời bạn nhập tác giả bài viết</span>
-						<i class="icon-user"></i>
+						@if($errors->first('author'))
+						<span class="text-danger">{{$errors->first('author')}}</span>
+						@endif
 					</div>
 				</div>
 				<input type="hidden" value="1" name="status">
