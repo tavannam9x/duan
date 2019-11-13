@@ -3,8 +3,8 @@
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
-use App\http\Middleware\ModeratorRole;
-use App\http\Middleware\ModeratorRoleAdmin;
+use App\Http\Middleware\ModeratorRole;
+use App\Http\Middleware\ModeratorRoleAdmin;
 class Kernel extends HttpKernel
 {
     /**
