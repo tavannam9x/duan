@@ -60,7 +60,7 @@ use App\Http\Requests\UserRequest;
                 <input type="email" style="font-size: 13px;" value="" name="email" placeholder="Email">
                 <input type="password" style="font-size: 13px;" value="" name="password" placeholder="Mật khẩu">
                 <input type="cf_password" style="font-size: 13px;" value="" placeholder="Nhập lại mật khẩu">
-                <input type="hidden" name="role" value="1">
+                <input type="hidden" name="role" value="Member">
                 <button type="submit" name="">Đăng kí</button>
                 <p>
                     <a href="home.html"> Trở về </a>

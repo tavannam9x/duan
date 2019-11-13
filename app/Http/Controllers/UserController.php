@@ -11,7 +11,7 @@ class UserController extends Controller
             $users = User::paginate(5);
         }else{
             $kw = $request->keyword;
-            $Users = User::where('title', 'like', "%$kw%")
+            $users = User::where('name', 'like', "%$kw%")->orwhere('role', 'like', "%$kw%")
                             ->paginate(5);
             $users->withPath("?keyword=$kw");
         }
@@ -70,7 +70,12 @@ class UserController extends Controller
     // Xóa
     public function deletePost($id){
         $post= User::find($id);
+        if($post->role < 900){
         $post->delete();
         return redirect(route('adminsuper'));
+        }
+        else{
+        return redirect(route('adminsuper'));
+        }
     }
 }

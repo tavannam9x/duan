@@ -1,7 +1,6 @@
 <?php
 
-Route::get('/', 'CommentController@index')->name('homecomment');
-Route::get('add-new', 'CommentController@addNew')->name('slideshow.add');
-Route::post('add-new', 'CommentController@saveAddNew');
-
-?>
+Route::get('sanpham', 'CommentController@indexpr')->name('homecommentpro');
+Route::get('baiviet', 'CommentController@indexbv')->name('homecommentbv');
+Route::get('deletePost/{id}', 'CommentController@deletePost')->name('homecommentbv.remove');
+?> 

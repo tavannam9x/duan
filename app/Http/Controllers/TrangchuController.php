@@ -8,13 +8,15 @@ use App\Models\Post;
 use App\Models\Contact;
 use App\Models\Comment;
 use App\Models\User;
+use DB;
 class TrangchuController extends Controller
 {
     public function index(Request $request){
         $category_product= Category::where('category_type','=','0')->get();
         $category_post= Category::where('category_type','=','1')->get();
-
-        return view('home', compact('category_product','category_post'));
+        $model = DB::table('product')->orderBy('views', 'desc')->take(5)->get();
+        $post = DB::table('post')->where('status',2)->orderBy('views', 'desc')->take(3)->get();
+        return view('home', compact('category_product','category_post','model','post'));
     }
 
     public function sanpham($id){
@@ -43,6 +45,30 @@ class TrangchuController extends Controller
         return redirect(route('lienhe'));
     }
 
+    public function saveAdd(Request $request, $id){
+        $category_product= Category::where('category_type','=','0')->get();
+        $category_post= Category::where('category_type','=','1')->get();
+        $cate=Product::find($id);
+        $cm= new Comment();
+        $model = Product::all()->where('id','!=',$id);
+        $cm->fill($request->all());
+        $cm->save();
+        return view('chitietsanpham', compact('category_product','category_post','cate','model'));
+    }
+
+
+    public function saveAddpost(Request $request, $id){
+        $category_product= Category::where('category_type','=','0')->get();
+        $category_post= Category::where('category_type','=','1')->get();
+        $cate=Post::find($id);
+        $cm= new Comment();
+        $model = Post::all()->where('id','!=',$id);
+        $cm->fill($request->all());
+        $cm->save();
+        return view('chitietbaiviet', compact('category_product','category_post','cate','model'));
+    }
+
+
     public function tintuc($id){
         $category_product= Category::where('category_type','=','0')->get();
         $category_post= Category::where('category_type','=','1')->get();
@@ -55,14 +81,16 @@ class TrangchuController extends Controller
         $category_product= Category::where('category_type','=','0')->get();
         $category_post= Category::where('category_type','=','1')->get();
         $cate=Product::find($id);
-        return view('chitietsanpham', compact('category_product','category_post','cate'));
+        $model = Product::all()->where('id','!=',$id);
+        return view('chitietsanpham', compact('category_product','category_post','cate','model'));
     }
 
     public function chitietbv($id){
         $category_product= Category::where('category_type','=','0')->get();
         $category_post= Category::where('category_type','=','1')->get();
         $cate=Post::find($id);
-        return view('chitietbaiviet', compact('category_product','category_post','cate'));
+        $model = Post::all()->where('id','!=',$id);
+        return view('chitietbaiviet', compact('category_product','category_post','cate','model'));
     }
 
     public function gioithieu(Request $request){

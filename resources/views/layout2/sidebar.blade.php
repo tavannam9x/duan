@@ -140,6 +140,27 @@
 					</ul>
 				</li>
 
+
+				<li>
+					<a href="javascript:;">
+					<i class="fa fa-book"></i>
+					<span class="title">Bình luận đánh giá</span>
+					<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li>
+							<a href="{{route('homecommentbv')}}">
+							<i class="fa fa-file"></i>
+							Quản lý bình luận bài viết</a>
+						</li>
+						<li>
+							<a href="{{route('homecommentpro')}}">
+							<i class="fa fa-plus-square"></i>
+							Quản lý đánh giá sản phẩm</a>
+						</li>
+					</ul>
+				</li>
+
 				<li>
 					<a href="javascript:;">
 					<i class="fa fa-book"></i>

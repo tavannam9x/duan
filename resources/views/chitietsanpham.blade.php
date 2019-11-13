@@ -140,15 +140,16 @@
         <div class="container">
             <h2 style="text-align: center; color: #306ac2;"> Sản phẩm liên quan </h2>
             <div class="row task-products">
+                @foreach($model as $splq)
                 <div class="col-md-3">
                     <div class="detail-category-products">
                         <div class="category-products-img">
-                            <a href="#">
-                                <img src="image/produc-nhoden-banchuan.jpg" width="100%">
+                            <a href="{{route('chitietsp', ['id' => $splq->id])}}">
+                                <img src="{{$splq->image}}" width="100%">
                             </a>
                         </div>
                         <div class="overlay">
-                            <a href="chitietsanpham.html" class="icon one" title="User Profile">
+                            <a href="{{route('chitietsp', ['id' => $splq->id])}}" class="icon one" title="User Profile">
                                 <i style="font-size: 14px;" class="fa fa-search" aria-hidden="true"></i>
                             </a>
                             <a href="cart.html" class="icon two" title="User Profile">
@@ -157,117 +158,17 @@
                         </div>
                         <div class="category-products-information">
                             <div class="category-products-name">
-                                <a href="#">
-                                    <span style="display: inline-block; font-weight: bold;"> Nho đen mỹ </span>
+                                <a href="{{route('chitietsp', ['id' => $splq->id])}}">
+                                    <span style="display: inline-block; font-weight: bold;"> {{$splq->name}} </span>
                                 </a>
                             </div>
                             <div class="category-products-price">
-                                <span> 150.000đ </span>
+                                <span> {{$splq->list_price}} </span>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-md-3">
-                    <div class="detail-category-products">
-                        <div class="category-products-img">
-                            <a href="#">
-                                <img src="image/produc-nhoden-banchuan.jpg" width="100%">
-                            </a>
-                        </div>
-                        <div class="overlay">
-                            <a href="chitietsanpham.html" class="icon one" title="User Profile">
-                                <i style="font-size: 14px;" class="fa fa-search" aria-hidden="true"></i>
-                            </a>
-                            <a href="cart.html" class="icon two" title="User Profile">
-                                <i style="font-size: 14px;" class="fa fa-cart-plus" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                        <div class="category-products-information">
-                            <div class="category-products-name">
-                                <a href="#">
-                                    <span style="display: inline-block; font-weight: bold;"> Nho đen mỹ </span>
-                                </a>
-                            </div>
-                            <div class="category-products-price">
-                                <span> 150.000đ </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="detail-category-products">
-                        <div class="category-products-img">
-                            <a href="#">
-                                <img src="image/produc-nhoden-banchuan.jpg" width="100%">
-                            </a>
-                        </div>
-                        <div class="overlay">
-                            <a href="chitietsanpham.html" class="icon one" title="User Profile">
-                                <i style="font-size: 14px;" class="fa fa-search" aria-hidden="true"></i>
-                            </a>
-                            <a href="cart.html" class="icon two" title="User Profile">
-                                <i style="font-size: 14px;" class="fa fa-cart-plus" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                        <div class="category-products-information">
-                            <div class="category-products-name">
-                                <a href="#">
-                                    <span style="display: inline-block; font-weight: bold;"> Nho đen mỹ </span>
-                                </a>
-                            </div>
-                            <div class="category-products-price">
-                                <span> 150.000đ </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="detail-category-products">
-                        <div class="category-products-img">
-                            <a href="#">
-                                <img src="image/produc-nhoden-banchuan.jpg" width="100%">
-                            </a>
-                        </div>
-                        <div class="overlay">
-                            <a href="chitietsanpham.html" class="icon one" title="User Profile">
-                                <i style="font-size: 14px;" class="fa fa-search" aria-hidden="true"></i>
-                            </a>
-                            <a href="cart.html" class="icon two" title="User Profile">
-                                <i style="font-size: 14px;" class="fa fa-cart-plus" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                        <div class="category-products-information">
-                            <div class="category-products-name">
-                                <a href="#">
-                                    <span style="display: inline-block; font-weight: bold;"> Nho đen mỹ </span>
-                                </a>
-                            </div>
-                            <div class="category-products-price">
-                                <span> 150.000đ </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="detail-category-products">
-                        <div class="category-products-img">
-                            <a href="#">
-                                <img src="image/produc-nhoden-banchuan.jpg" width="100%">
-                            </a>
-                        </div>
-                        <div class="category-products-information">
-                            <div class="category-products-name">
-                                <a href="#">
-                                    <span style="display: inline-block; font-weight: bold;"> Nho đen mỹ </span>
-                                </a>
-                            </div>
-                            <div class="category-products-price">
-                                <span> 150.000đ </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

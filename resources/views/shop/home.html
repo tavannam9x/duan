@@ -267,15 +267,16 @@
         </div>
         <div class="container">
             <div class="row task-products">
+                @foreach($model as $spnb)
                 <div class="col-md-4">
                     <div class="detail-category-products">
                         <div class="category-products-img">
-                            <a href="chitietsanpham.html">
-                                <img src="image/produc-buoixanh-banchuan.jpg" width="100%">
+                            <a href="{{route('sanpham', ['id' => $cate->id])}}">
+                                <img src="{{$spnb->image}}" width="100%">
                             </a>
                         </div>
                         <div class="overlay">
-                            <a href="chitietsanpham.html" class="icon one" title="Xem chi tiết">
+                            <a href="{{route('sanpham', ['id' => $cate->id])}}" class="icon one" title="Xem chi tiết">
                                 <i style="font-size: 14px;" class="fa fa-search" aria-hidden="true"></i>
                             </a>
                             <a href="cart.html" class="icon two" title="Giỏ hàng">
@@ -284,124 +285,17 @@
                         </div>
                         <div class="category-products-information">
                             <div class="category-products-name">
-                                <a href="chitietsanpham.html">
-                                    <span style="display: inline-block; font-weight: bold;"> Nho đen mỹ </span>
+                                <a href="{{route('sanpham', ['id' => $cate->id])}}">
+                                    <span style="display: inline-block; font-weight: bold;"> {{$spnb->name}} </span>
                                 </a>
                             </div>
                             <div class="category-products-price">
-                                <span> 150.000đ </span>
+                                <span> {{$spnb->list_price}} </span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="detail-category-products">
-                        <div class="category-products-img">
-                            <a href="chitietsanpham.html">
-                                <img src="image/produc-nhoden-banchuan.jpg" width="100%">
-                            </a>
-                        </div>
-                        <div class="overlay">
-                            <a href="chitietsanpham.html" class="icon one" title="Xem chi tiết">
-                                <i style="font-size: 14px;" class="fa fa-search" aria-hidden="true"></i>
-                            </a>
-                            <a href="cart.html" class="icon two" title="Giỏ hàng">
-                                <i style="font-size: 14px;" class="fa fa-cart-plus" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                        <div class="category-products-information">
-                            <div class="category-products-name">
-                                <a href="chitietsanpham.html">
-                                    <span style="display: inline-block; font-weight: bold;"> Nho đen mỹ </span>
-                                </a>
-                            </div>
-                            <div class="category-products-price">
-                                <span> 150.000đ </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="detail-category-products">
-                        <div class="category-products-img">
-                            <a href="chitietsanpham.html">
-                                <img src="image/produc-mangcut-banchuan.jpg" width="100%">
-                            </a>
-                        </div>
-                        <div class="overlay">
-                            <a href="chitietsanpham.html" class="icon one" title="Xem chi tiết">
-                                <i style="font-size: 14px;" class="fa fa-search" aria-hidden="true"></i>
-                            </a>
-                            <a href="cart.html" class="icon two" title="Giỏ hàng">
-                                <i style="font-size: 14px;" class="fa fa-cart-plus" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                        <div class="category-products-information">
-                            <div class="category-products-name">
-                                <a href="chitietsanpham.html">
-                                    <span style="display: inline-block; font-weight: bold;"> Nho đen mỹ </span>
-                                </a>
-                            </div>
-                            <div class="category-products-price">
-                                <span> 150.000đ </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="detail-category-products">
-                        <div class="category-products-img">
-                            <a href="chitietsanpham.html">
-                                <img src="image/produc-xoaixanh-banchuan.jpg" width="100%">
-                            </a>
-                        </div>
-                        <div class="overlay">
-                            <a href="chitietsanpham.html" class="icon one" title="Xem chi tiết">
-                                <i style="font-size: 14px;" class="fa fa-search" aria-hidden="true"></i>
-                            </a>
-                            <a href="cart.html" class="icon two" title="Giỏ hàng">
-                                <i style="font-size: 14px;" class="fa fa-cart-plus" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                        <div class="category-products-information">
-                            <div class="category-products-name">
-                                <a href="chitietsanpham.html">
-                                    <span style="display: inline-block; font-weight: bold;"> Nho đen mỹ </span>
-                                </a>
-                            </div>
-                            <div class="category-products-price">
-                                <span> 150.000đ </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="detail-category-products">
-                        <div class="category-products-img">
-                            <a href="chitietsanpham.html">
-                                <img src="image/produc-nhoden-banchuan.jpg" width="100%">
-                            </a>
-                        </div>
-                        <div class="overlay">
-                            <a href="chitietsanpham.html" class="icon one" title="Xem chi tiết">
-                                <i style="font-size: 14px;" class="fa fa-search" aria-hidden="true"></i>
-                            </a>
-                            <a href="cart.html" class="icon two" title="Giỏ hàng">
-                                <i style="font-size: 14px;" class="fa fa-cart-plus" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                        <div class="category-products-information">
-                            <div class="category-products-name">
-                                <a href="chitietsanpham.html">
-                                    <span style="display: inline-block; font-weight: bold;"> Nho đen mỹ </span>
-                                </a>
-                            </div>
-                            <div class="category-products-price">
-                                <span> 150.000đ </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

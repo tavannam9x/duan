@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
+use Hash;
 
 class DangkiController extends Controller
 {
@@ -19,8 +20,11 @@ class DangkiController extends Controller
         $model = new User();
         $category_product= Category::where('category_type','=','0')->get();
         $category_post= Category::where('category_type','=','1')->get();
-        $model->fill($request->all());
-        $model->save();
+        $input = $request->all();
+
+        $input['password'] = Hash::make($input['password']);
+
+        $model->create($input);
         return view('dangnhap',compact('category_product','category_post','model'));
     }
     public function Login(){
@@ -38,7 +42,7 @@ class DangkiController extends Controller
         return redirect(route('trangchu',compact('category_product','category_post')))->with('errmsg', 'Sai thông tin tài khoản/mật khẩu');
     }
 
-    public function Logout(){
+    public function logoutus(){
 
         Auth::logout();
         return redirect(route('trangchu'));

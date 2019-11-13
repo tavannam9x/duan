@@ -104,16 +104,28 @@
                     </td>
                     <td>{{$tk->address}}</td>
                     <td>
-                       {{$tk->gender}}
+                       @if($tk->gender == 1)
+                       <p>Nam</p>
+                       @elseif($tk->gender == 0)
+                       <p>Nữ</p>
+                       @endif
                     </td>
                     <td>
                        {{$tk->rate_star}}
                     </td>
                     <td>
-                       {{$tk->role}}
+                    @if($tk->role == "Admin")
+                     <p class="label label-success">Admin</p>
+                    @elseif($tk->role == "Edirtor")
+                     <p class="label label-info">Editor</p>
+                     @elseif($tk->role == "Shipper")
+                     <p class="label label-warning">Shipper</p>
+                     @else
+                     <p class="label label-primary">Member</p>
+                    @endif
                     </td>
                     <td>
-                      <a href="{{route('user.edit', ['id' => $tk->id])}}" class="btn default btn-xs green">
+                      <a href="{{route('users.edit', ['id' => $tk->id])}}" class="btn default btn-xs green">
                       <i class="fa fa-edit"></i> Sửa </a>
                       <a href="javascript:;" linkurl="{{route('user.remove', ['id' => $tk->id])}}" class="btn default btn-xs red xoa">
                       <i class="fa fa-trash-o"></i> Xóa </a>

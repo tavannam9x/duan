@@ -20,15 +20,15 @@
 		</div>
 	</div>
 	<div class="portlet-body form" style="height: auto;">
-		<form action="{{route('user.edit')}}" method="post" enctype="multipart/form-data">
+		<form action="{{route('users.edit', ['id' => $model->id])}}" method="post" enctype="multipart/form-data">
 			@csrf
 			<div class="form-body">
 				<div class="form-group form-md-line-input has-success form-md-floating-label">
 					<div class="input-icon right">
 						<label for="form_control_1">Quyền</label>
 						<select name="role" class="form-control">
-							<option value="600">Editor</option>
-							<option value="300">Shipper</option>
+							<option value="Editor">Editor</option>
+							<option value="Shipper">Shipper</option>
 						</select>
 						<i class="icon-user"></i>
 					</div>

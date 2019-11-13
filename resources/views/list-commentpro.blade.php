@@ -58,25 +58,15 @@
                        Tên khách hàng
                     </th>
                     <th>
-                       Số điện thoại
+                       Điểm đánh giá
                     </th>
                     <th>
-                       Email
-                    </th>
-                    <th>
-                       Nội dung góp ý
-                    </th>
-                    <th>
-                       Ngày phản hồi
-                    </th>
-                    <th>
-                      Trạng thái
-                    </th>
-                    <th>
+                       Sản phẩm 
                     </th>
                   </tr>
                 </thead>
-                @foreach($lienhe as $lh)
+                @foreach($binhluan as $lh)
+                @if($lh->product_id != "")
                 <tbody>
                 <tr>
                     <td>
@@ -86,45 +76,20 @@
                        {{$lh->name}}
                     </td>
                     <td>
-                       {{$lh->phone_number}}
+                       {{$lh->rate_star}}
                     </td>
+                    
                     <td>
-                       {{$lh->email}}
-                    </td>
-                    <td style="
-                        dilhlay:block;
-                        padding:5px;
-                        margin-top:5px;
-                        width:250px;
-                        height:200px;
-                        overflow:scroll;
-                        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-                        border-radius: 10px;
-                        background-color: #F5F5F5;
-                        border-radius: 10px;
-                        ">
-                        {{$lh->content}}
-                      
-                    </td>
-                    <td>
-                       {{$lh->date}}
-                    </td>
-                    <td>
-                       @if($lh->status == 0)
-                       <p class="label label-sm label-warning">Ẩn bình luận</p>
-                      @elseif($lh->status == 1)
-                       <p class="label label-sm label-success">Hiển thị bình luận</p>
-                      @endif
-                    </td>
-                    <td>
-                      <a href="javascript:;" linkurl="{{route('contact.remove', ['id' => $lh->id])}}" class="btn default btn-xs red xoa">
-                      <i class="fa fa-trash-o"></i> Xóa </a>
+                     @isset($lh->commentpro->name)
+                        {{$lh->commentpro->name}}
+                     @endisset
                     </td>
                   </tr>
                 </tbody>
+                @endif
                 @endforeach
                 <tr>
-                  <td colspan="13" class="text-center">{{$lienhe->links()}}</td>
+                  <td colspan="13" class="text-center">{{$binhluan->links()}}</td>
                 </tr>
                 </table>
             </div>
@@ -134,4 +99,4 @@
     </div>
   </div>
 </div>
-@endsection();
+@endsection();  

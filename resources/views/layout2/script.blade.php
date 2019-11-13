@@ -23,6 +23,8 @@
 <script src="../../../adminltes/assets/admin/layout2/scripts/quick-sidebar.js" type="text/javascript"></script>
 <script src="../../../adminltes/assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
 <script src="../../../adminltes/assets/admin/pages/scripts/tasks.js" type="text/javascript"></script>
+<script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js"></script>
+
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
@@ -42,7 +44,7 @@ jQuery(document).ready(function() {
     var removeUrl = $(this).attr('linkurl');
     swal({
       title: "Cảnh báo",
-      text: "Bạn có chắc chắn muốn xoá danh mục này không?",
+      text: "Bạn có chắc chắn muốn xoá không?",
       icon: "warning",
       buttons: true,
       dangerMode: true,

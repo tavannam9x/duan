@@ -90,7 +90,7 @@ form .stars span {
 </head>
 <body>
 <!-- partial:index.partial.html -->
-<form action="" method="post" style="width: 150px; margin-bottom: 10px;">
+<form action="{{route('chitietsp', ['id' => $cate->id])}}" method="post" style="width: 150px; margin-bottom: 10px;">
   @csrf
 	<div class="stars">
 		<input type="radio" name="rate_star" value="1" class="star-1" id="star-1" />
@@ -105,8 +105,9 @@ form .stars span {
 		<label class="star-5" for="star-5">5</label>
 		<span></span>
 	</div>
-  <!-- <input type="hidden" name="product_id" value="{{$cate->id}}">
-  <input type="hidden" class="form-control" name="name" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" value="{{ Illuminate\Support\Facades\Auth::user()->name }}" readonly="true"> -->
+  <input type="hidden" name="product_id" value="{{$cate->id}}">
+  <input type="hidden" name="status" value="0">
+  <input type="hidden" class="form-control" name="name" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" value="{{ Illuminate\Support\Facades\Auth::user()->name }}" readonly="true">
   <button type="submit" style="margin-top: 30px; margin-bottom: 30px;" class="btn btn-info">
                                 Gửi đánh giá </button>
 </form>

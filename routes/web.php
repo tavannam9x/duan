@@ -61,12 +61,14 @@ Route::group(['middleware' => 'auth'], function(){
 // Route::get('category/edit/{id}', 'CategoryController@editForm')->name('category.edit');
 // Route::post('category/edit/{id}', 'CategoryController@saveEdit');
 // Route::get('category/deletePost/{id}', 'CategoryController@deletePost')->name('category.remove');
-
 Route::get('/admin2', function(){
 	return view('admin2');
 })->name('homeadmin');
 
+
 });
+
+
 
 // Route::get('/', 'TrangchuController@index')->name('trangchu');
 // Route::get('sanpham/{id}', 'TrangchuController@sanpham')->name('sanpham');
@@ -74,11 +76,16 @@ Route::get('/admin2', function(){
 
 
 
+// Route::get('/dangki', 'DangkiController@addNew')->name('dangki.add');
+// Route::post('/dangki', 'DangkiController@saveAddnew');
+// Route::get('/dangnhap', 'DangkiController@Login')->name('dangnhap.add');
+// Route::post('/dangnhap', 'DangkiController@postLogin');
+// Route::get('/dangxuat', 'DangkiController@logoutus')->name('logoutUser');
 Route::get('/dangki', 'DangkiController@addNew')->name('dangki.add');
 Route::post('/dangki', 'DangkiController@saveAddnew');
 Route::get('/dangnhap', 'DangkiController@Login')->name('dangnhap.add');
 Route::post('/dangnhap', 'DangkiController@postLogin');
-Route::get('/dangxuat', 'DangkiController@Logout')->name('logoutUser');
+Route::get('/dangxuat', 'DangkiController@logoutus')->name('logoutUser');
 
 Route::get('cp-login', 'Auth\LoginController@loginForm')->name('login');
 Route::post('cp-login', 'Auth\LoginController@postLogin');

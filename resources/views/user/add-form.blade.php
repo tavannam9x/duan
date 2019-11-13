@@ -93,8 +93,8 @@
 					<div class="input-icon right">
 						<label for="form_control_1">Quyền</label>
 						<select name="role" class="form-control">
-							<option value="600">Editor</option>
-							<option value="300">Shipper</option>
+							<option value="Editor">Editor</option>
+							<option value="Shipper">Shipper</option>
 						</select>
 						<i class="icon-user"></i>
 					</div>

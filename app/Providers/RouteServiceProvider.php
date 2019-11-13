@@ -40,7 +40,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapWebRoutes();
 
 
-        // 2019/11/5 Ông tạ van nam tạo ra
+        // 2019/11/5 Bạn tạ van nam tạo ra
         // @author Namtv
         $this->mapProductRoutes();
         $this->mapPostRoutes();
@@ -52,6 +52,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapPostsRoutes();
         $this->mapWebsite();
         $this->mapUser();
+        $this->mapComment();
 
 
         //
@@ -70,6 +71,8 @@ class RouteServiceProvider extends ServiceProvider
              ->namespace($this->namespace)
              ->group(base_path('routes/web.php'));
     }
+
+    
 
     protected function mapProductRoutes()
     {
@@ -149,6 +152,14 @@ class RouteServiceProvider extends ServiceProvider
              ->prefix('admin2/taikhoan')
              ->namespace($this->namespace)
              ->group(base_path('routes/user.php'));
+    }
+
+    protected function mapComment()
+    {
+        Route::middleware('web','auth','mod.check')
+             ->prefix('admin2/comment')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/comment.php'));
     }
 
     /**

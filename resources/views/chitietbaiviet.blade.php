@@ -85,65 +85,44 @@
                         <p>{!!$cate->description!!}</p>
                     </div>
                     <h2> Viết bình luận của bạn </h2>
+
+
+                    @if(Illuminate\Support\Facades\Auth::check())
                     <div class="detail-form">
-                        <form>
+                        <form action="{{route('chitietbv', ['id' => $cate->id])}}" method="post">
+                            @csrf
                             <div class="form-group">
-                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Họ tên">
+                                <input type="text" class="form-control" value="{{ Illuminate\Support\Facades\Auth::user()->name }}" id="exampleInputEmail1" aria-describedby="emailHelp" name="name" readonly="true">
                             </div>
+                            <input type="hidden" name="status" value="1">
+                            <input type="hidden" name="post_id" value="{{$cate->id}}">
                             <div class="form-group">
-                                <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Email">
-                            </div>
-                            <div class="form-group">
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Nội dung"></textarea>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" name="comment" rows="3" placeholder="Nội dung"></textarea>
                             </div>
                             <button type="submit" style="margin-bottom: 30px;" class="btn btn-info">
                                 Gửi bình luận </button>
                         </form>
                     </div>
+                    @endif
+
+
+
                     <h2> Bài viết liên quan </h2>
                     <div class="related-post">
                         <div class="row">
-                            <div class="col-md-3">
+                            @foreach($model as $bv)
+                            <div class="col-md-4">
                                 <div class="related-post-img">
                                     <a href="chitietbaiviet.html">
-                                        <img src="image/blog1.jpg" width="100%">
+                                        <img src="{{$bv->image}}" width="100%">
                                     </a>
                                 </div>
-                                <div class="related-post-title">
-                                    <a href="#"> Tại sao bạn không nên uống nước ép đóng chai?
+                                <div class="related-post-title" style="font-size: 20px;">
+                                    <a href="#"> {{$bv->title}}
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="related-post-img">
-                                    <a href="chitietbaiviet.html">
-                                        <img src="image/blog2.jpg" width="100%">
-                                    </a>
-                                </div>
-                                <div class="related-post-title">
-                                    <a href="#"> Tại sao bạn không nên uống nước ép đóng chai? </a>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="related-post-img">
-                                    <a href="chitietbaiviet.html">
-                                        <img src="image/blog3.jpg" width="100%">
-                                    </a>
-                                </div>
-                                <div class="related-post-title">
-                                    <a href="#"> Tại sao bạn không nên uống nước ép đóng chai? </a>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="related-post-img">
-                                    <a href="chitietbaiviet.html">
-                                        <img src="image/blog1.jpg" width="100%">
-                                    </a>
-                                </div>
-                                <div class="related-post-title">
-                                    <a href="#"> Tại sao bạn không nên uống nước ép đóng chai? </a>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

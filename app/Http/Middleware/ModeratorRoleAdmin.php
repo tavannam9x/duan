@@ -16,7 +16,7 @@ class ModeratorRoleAdmin
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::check() && Auth::user()->role >= 500){
+        if(Auth::check() && Auth::user()->role == "Editor"){
             return $next($request);
         }
         return redirect()->route('auth.403')->with('msg','Bạn không có quyền tuổi gì');

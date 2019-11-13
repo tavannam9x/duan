@@ -10,7 +10,7 @@ class Comment extends Model
     protected $fillable = [
     	'name',
     	'comment',
-    	'rate_star','product_id','post_id',
+    	'rate_star','product_id','post_id','status'
     ];
 
     public function commentpro(){

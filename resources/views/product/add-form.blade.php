@@ -70,7 +70,7 @@
 						@endif
 					</div>
 				</div>
-				<span class="form_control">Nội dung chi tiết bài viết:</span>
+				<span class="form_control">Nội dung chi tiết sản phẩm</span>
 				<div class="form-group form-md-line-input has-success form-md-floating-label">
 					<div class="input-icon right">
 						<textarea id="demo" class="form-control cheditor" rows="5" value="" name="description" style="margin-top: 10px;"></textarea>

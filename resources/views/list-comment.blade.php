@@ -55,24 +55,23 @@
                        ID
                     </th>
                     <th>
-                       Tên danh mục
+                       Tên khách hàng
                     </th>
                     <th>
-                       Mô tả
+                       Nội dung bình luận
                     </th>
                     <th>
-                       Loại danh mục
+                       Bài viết
                     </th>
                     <th>
-                      Trạng thái
+                       Trạng thái
                     </th>
                     <th>
-                     <a href="{{route('category.add')}}" class="btn default btn-xs blue">
-                      <i class="fa fa-plus"></i> Thêm</a>
                     </th>
                   </tr>
                 </thead>
-                @foreach($danhmuc as $lh)
+                @foreach($binhluan as $lh)
+                @if($lh->post_id != "")
                 <tbody>
                 <tr>
                     <td>
@@ -82,32 +81,30 @@
                        {{$lh->name}}
                     </td>
                     <td>
-                       {{$lh->description}}
+                       {{$lh->comment}}
                     </td>
                     <td>
-                       @if($lh->category_type == 0)
-                       Sản Phẩm
-                       @elseif($lh->category_type==1)
-                       Bài viết
-                       @endif
+                     @isset($lh->commentpost->title)
+                        {{$lh->commentpost->title}}
+                     @endisset
                     </td>
                     <td>
-                      @if($lh->status == 0)
-                       <p class="label label-sm label-warning">Ẩn danh mục</p>
+                       @if($lh->status == 0)
+                       <p class="label label-sm label-warning">Ẩn bình luận</p>
                       @elseif($lh->status == 1)
-                       <p class="label label-sm label-success">Hiển thị</p>
+                       <p class="label label-sm label-success">Hiển thị bình luận</p>
                       @endif
                     </td>
                     <td>
-                      <a href="{{route('category.edit', ['id' => $lh->id])}}" class="btn default btn-xs green">
-                      <i class="fa fa-edit"></i> Sửa </a>
-                      <a href="javascript:;" linkurl="{{route('category.remove', ['id' => $lh->id])}}" class="btn default btn-xs red xoa"><i class="fa fa-trash-o"></i> Xóa </a>
+                      <a href="javascript:;" linkurl="{{route('homecommentbv.remove', ['id' => $lh->id])}}" class="btn default btn-xs red xoa">
+                      <i class="fa fa-trash-o"></i> Xóa </a>
                     </td>
                   </tr>
                 </tbody>
+                @endif
                 @endforeach
                 <tr>
-                  <td colspan="13" class="text-center">{{$danhmuc->links()}}</td>
+                  <td colspan="13" class="text-center">{{$binhluan->links()}}</td>
                 </tr>
                 </table>
             </div>
@@ -117,4 +114,4 @@
     </div>
   </div>
 </div>
-@endsection();
+@endsection();  

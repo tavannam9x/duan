@@ -186,15 +186,16 @@
         </div>
         <div class="container">
             <div class="row task-products">
+                 @foreach($model as $spnb)
                 <div class="col-md-4">
                     <div class="detail-category-products">
                         <div class="category-products-img">
-                            <a href="chitietsanpham.html">
-                                <img src="../../../shop/image/produc-buoixanh-banchuan.jpg" width="100%">
+                            <a href="{{route('chitietsp', ['id' => $spnb->id])}}">
+                                <img src="{{$spnb->image}}" width="100%">
                             </a>
                         </div>
                         <div class="overlay">
-                            <a href="chitietsanpham.html" class="icon one" title="Xem chi tiết">
+                            <a href="{{route('chitietsp', ['id' => $spnb->id])}}" class="icon one" title="Xem chi tiết">
                                 <i style="font-size: 14px;" class="fa fa-search" aria-hidden="true"></i>
                             </a>
                             <a href="cart.html" class="icon two" title="Giỏ hàng">
@@ -203,124 +204,17 @@
                         </div>
                         <div class="category-products-information">
                             <div class="category-products-name">
-                                <a href="chitietsanpham.html">
-                                    <span style="display: inline-block; font-weight: bold;"> Nho đen mỹ </span>
+                                <a href="{{route('chitietsp', ['id' => $spnb->id])}}">
+                                    <span style="display: inline-block; font-weight: bold;"> {{$spnb->name}} </span>
                                 </a>
                             </div>
                             <div class="category-products-price">
-                                <span> 150.000đ </span>
+                                <span> {{$spnb->list_price}} </span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="detail-category-products">
-                        <div class="category-products-img">
-                            <a href="chitietsanpham.html">
-                                <img src="../../../shop/image/produc-nhoden-banchuan.jpg" width="100%">
-                            </a>
-                        </div>
-                        <div class="overlay">
-                            <a href="chitietsanpham.html" class="icon one" title="Xem chi tiết">
-                                <i style="font-size: 14px;" class="fa fa-search" aria-hidden="true"></i>
-                            </a>
-                            <a href="cart.html" class="icon two" title="Giỏ hàng">
-                                <i style="font-size: 14px;" class="fa fa-cart-plus" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                        <div class="category-products-information">
-                            <div class="category-products-name">
-                                <a href="chitietsanpham.html">
-                                    <span style="display: inline-block; font-weight: bold;"> Nho đen mỹ </span>
-                                </a>
-                            </div>
-                            <div class="category-products-price">
-                                <span> 150.000đ </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="detail-category-products">
-                        <div class="category-products-img">
-                            <a href="chitietsanpham.html">
-                                <img src="../../../shop/image/produc-mangcut-banchuan.jpg" width="100%">
-                            </a>
-                        </div>
-                        <div class="overlay">
-                            <a href="chitietsanpham.html" class="icon one" title="Xem chi tiết">
-                                <i style="font-size: 14px;" class="fa fa-search" aria-hidden="true"></i>
-                            </a>
-                            <a href="cart.html" class="icon two" title="Giỏ hàng">
-                                <i style="font-size: 14px;" class="fa fa-cart-plus" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                        <div class="category-products-information">
-                            <div class="category-products-name">
-                                <a href="chitietsanpham.html">
-                                    <span style="display: inline-block; font-weight: bold;"> Nho đen mỹ </span>
-                                </a>
-                            </div>
-                            <div class="category-products-price">
-                                <span> 150.000đ </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="detail-category-products">
-                        <div class="category-products-img">
-                            <a href="chitietsanpham.html">
-                                <img src="../../../shop/image/produc-xoaixanh-banchuan.jpg" width="100%">
-                            </a>
-                        </div>
-                        <div class="overlay">
-                            <a href="chitietsanpham.html" class="icon one" title="Xem chi tiết">
-                                <i style="font-size: 14px;" class="fa fa-search" aria-hidden="true"></i>
-                            </a>
-                            <a href="cart.html" class="icon two" title="Giỏ hàng">
-                                <i style="font-size: 14px;" class="fa fa-cart-plus" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                        <div class="category-products-information">
-                            <div class="category-products-name">
-                                <a href="chitietsanpham.html">
-                                    <span style="display: inline-block; font-weight: bold;"> Nho đen mỹ </span>
-                                </a>
-                            </div>
-                            <div class="category-products-price">
-                                <span> 150.000đ </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="detail-category-products">
-                        <div class="category-products-img">
-                            <a href="chitietsanpham.html">
-                                <img src="../../../shop/image/produc-nhoden-banchuan.jpg" width="100%">
-                            </a>
-                        </div>
-                        <div class="overlay">
-                            <a href="chitietsanpham.html" class="icon one" title="Xem chi tiết">
-                                <i style="font-size: 14px;" class="fa fa-search" aria-hidden="true"></i>
-                            </a>
-                            <a href="cart.html" class="icon two" title="Giỏ hàng">
-                                <i style="font-size: 14px;" class="fa fa-cart-plus" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                        <div class="category-products-information">
-                            <div class="category-products-name">
-                                <a href="chitietsanpham.html">
-                                    <span style="display: inline-block; font-weight: bold;"> Nho đen mỹ </span>
-                                </a>
-                            </div>
-                            <div class="category-products-price">
-                                <span> 150.000đ </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -365,187 +259,28 @@
             </div>
             <br>
             <div class="row">
+                @foreach($model as $spkm)
                 <div class="col-md-4">
                     <div class="media">
                         <div class="wiggle">
-                            <a href="chitietsanpham.html">
-                                <img src="../../../shop/image/produc-chuoi-banchuan.jpg" class="mr-3" alt="" width="100" class="responsive">
+                            <a href="{{route('chitietsp', ['id' => $spkm->id])}}">
+                                <img src="{{$spkm->image}}" class="mr-3" alt="" width="100" class="responsive">
                             </a>
                         </div>
                         <div class="media-body">
-                            <a href="chitietsanpham.html">
-                                <p class="mt-2" style="font-weight: bold;"> Chuối vàng </p>
+                            <a href="{{route('chitietsp', ['id' => $spkm->id])}}">
+                                <p class="mt-2" style="font-weight: bold;"> {{$spkm->name}} </p>
                             </a>
                             <span style="color: #3b9048; font-size: 16px;">
-                                50.000đ
+                               {{$spkm->sell_price}} VNĐ
                             </span>
                             <strike style="padding: 0 10px; color: #acacac;">
-                                70.000đ
-                            </strike>
+                                {{$spkm->list_price}} VNĐ
+                            </strike> 
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="media">
-                        <div class="wiggle">
-                            <a href="chitietsanpham.html">
-                                <img src="../../../shop/image/produc-dua-banchuan.jpg" class="mr-3" alt="" width="100" class="responsive">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <a href="chitietsanpham.html">
-                                <p style="font-weight: bold;" class="mt-2"> Quả dứa miền nam </p>
-                            </a>
-                            <span style="color: #3b9048; font-size: 16px;">
-                                50.000đ
-                            </span>
-                            <strike style="padding: 0 10px; color: #acacac;">
-                                70.000đ
-                            </strike>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="media">
-                        <div class="wiggle">
-                            <a href="chitietsanpham.html">
-                                <img src="../../../shop/image/produc-dudu-banchuan.jpg" class="mr-3" alt="" width="100" class="responsive">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <a href="chitietsanpham.html">
-                                <p style="font-weight: bold;" class="mt-2"> Quả đu đủ </p>
-                            </a>
-                            <span style="color: #3b9048; font-size: 16px;">
-                                50.000đ
-                            </span>
-                            <strike style="padding: 0 10px; color: #acacac;">
-                                70.000đ
-                            </strike>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="media">
-                        <div class="wiggle">
-                            <a href="chitietsanpham.html">
-                                <img src="../../../shop/image/produc-mangcut-banchuan.jpg" class="mr-3" alt="" width="100" class="responsive">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <a href="chitietsanpham.html">
-                                <p style="font-weight: bold;" class="mt-2"> Măng cụt miền nam </p>
-                            </a>
-                            <span style="color: #3b9048; font-size: 16px;display: inline-block;">
-                                50.000đ
-                            </span>
-                            <strike style="padding: 0 10px; color: #acacac;">
-                                70.000đ
-                            </strike>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="media">
-                        <div class="wiggle">
-                            <a href="chitietsanpham.html">
-                                <img src="../../../shop/image/produc-saurieng-banchuan.jpg" class="mr-3" alt="" width="100" class="responsive">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <a href="chitietsanpham.html">
-                                <p style="font-weight: bold;" class="mt-2"> Sầu riêng miền nam </p>
-                            </a>
-                            <span style="color: #3b9048; font-size: 16px;">
-                                50.000đ
-                            </span>
-                            <strike style="padding: 0 10px; color: #acacac;">
-                                70.000đ
-                            </strike>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="media">
-                        <div class="wiggle">
-                            <a href="chitietsanpham.html">
-                                <img src="../../../shop/image/produc-thanglong-banchuan.jpg" class="mr-3" alt="" width="100" class="responsive">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <a href="chitietsanpham.html">
-                                <p style="font-weight: bold;" class="mt-2"> Thăng long miền nam </p>
-                            </a>
-                            <span style="color: #3b9048; font-size: 16px;">
-                                50.000đ
-                            </span>
-                            <strike style="padding: 0 10px; color: #acacac;">
-                                70.000đ
-                            </strike>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="media">
-                        <div class="wiggle">
-                            <a href="chitietsanpham.html">
-                                <img src="../../../shop/image/produc-camngot-banchuan.jpg" class="mr-3" alt="" width="100" class="responsive">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <a href="chitietsanpham.html">
-                                <p style="font-weight: bold;" class="mt-2"> Cam vàng ngọt </p>
-                            </a>
-                            <span style="color: #3b9048; font-size: 16px;">
-                                50.000đ
-                            </span>
-                            <strike style="padding: 0 10px; color: #acacac;">
-                                70.000đ
-                            </strike>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="media">
-                        <div class="wiggle">
-                            <a href="chitietsanpham.html">
-                                <img src="../../../shop/image/produc-duahau-banchuan.jpg" class="mr-3" alt="" width="100" class="responsive">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <a href="chitietsanpham.html">
-                                <p style="font-weight: bold;" class="mt-2"> Dưa hấu đỏ </p>
-                            </a>
-                            <span style="color: #3b9048; font-size: 16px;">
-                                50.000đ
-                            </span>
-                            <strike style="padding: 0 10px; color: #acacac;">
-                                70.000đ
-                            </strike>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="media">
-                        <div class="wiggle">
-                            <a href="chitietsanpham.html">
-                                <img src="../../../shop/image/produc-taodo-banchuan.jpg" class="mr-3" alt="" width="100" class="responsive">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <a href="chitietsanpham.html">
-                                <p class="mt-2" style="font-weight: bold;"> Táo đỏ </p>
-                            </a>
-                            <span style="color: #3b9048; font-size: 16px;">
-                                50.000đ
-                            </span>
-                            <strike style="padding: 0 10px; color: #acacac;">
-                                70.000đ
-                            </strike>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -560,74 +295,30 @@
         </div>
         <div class="container">
             <div class="row">
+                @foreach($post as $bv)
                 <div class="col-md-4">
                     <div class="box-blog">
                         <div class="blog-img">
-                            <a href="chitietbaiviet.html">
-                                <img src="../../../shop/image/blog1.jpg" width="100%">
+                            <a href="{{route('chitietbv', ['id' => $bv->id])}}">
+                                <img src="{{$bv->image}}" width="100%">
                             </a>
                         </div>
                         <div class="blog-content">
-                            <a href="chitietbaiviet.html"> Giá rau củ tăng mạnh vì trời mưa </a>
-                            <p> Khoảng 1 tuần gần đây, do ảnh hưởng của những cơn mưa kéo dài liên tiếp nên ...</p>
+                            <a href="{{route('chitietbv', ['id' => $bv->id])}}"> {{$bv->title}} </a>
+                            <p> {{$bv->short_desc}}</p>
                             <div class="day-blog" style="margin: 5px 0;">
                                 <span class="post-time">
-                                    <i class="fa fa-user" aria-hidden="true"></i> Bởi sơn
+                                    <i class="fa fa-user" aria-hidden="true"></i> Bởi {{$bv->author}}
                                 </span>
                                 <span class="short-time">
-                                    <i class="fa fa-calendar" aria-hidden="true"></i> 14/10/2019
+                                    <i class="fa fa-calendar" aria-hidden="true"></i> {{$bv->date}}
                                 </span>
                             </div>
-                            <a href="#" class="viewmore-blog" href="#">Đọc thêm</a>
+                            <a href="#" class="viewmore-blog" href="{{route('chitietbv', ['id' => $bv->id])}}">Đọc thêm</a>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-md-4">
-                    <div class="box-blog">
-                        <div class="blog-img">
-                            <a href="chitietbaiviet.html">
-                                <img src="../../../shop/image/blog2.jpg" width="100%">
-                            </a>
-                        </div>
-                        <div class="blog-content">
-                            <a href="chitietbaiviet.html"> Giá rau củ tăng mạnh vì trời mưa </a>
-                            <p> Khoảng 1 tuần gần đây, do ảnh hưởng của những cơn mưa kéo dài liên tiếp nên ...</p>
-                            <div class="day-blog" style="margin: 5px 0;">
-                                <span class="post-time">
-                                    <i class="fa fa-user" aria-hidden="true"></i> Bởi sơn
-                                </span>
-                                <span class="short-time">
-                                    <i class="fa fa-calendar" aria-hidden="true"></i> 14/10/2019
-                                </span>
-                            </div>
-                            <a href="#" class="viewmore-blog" href="#">Đọc thêm</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="box-blog">
-                        <div class="blog-img">
-                            <a href="chitietbaiviet.html">
-                                <img src="../../../shop/image/blog3.jpg" width="100%">
-                            </a>
-                        </div>
-                        <div class="blog-content">
-                            <a href="chitietbaiviet.html"> Giá rau củ tăng mạnh vì trời mưa </a>
-                            <p> Khoảng 1 tuần gần đây, do ảnh hưởng của những cơn mưa kéo dài liên tiếp nên ...</p>
-                            <div class="day-blog" style="margin: 5px 0;">
-                                <span class="post-time">
-                                    <i class="fa fa-user" aria-hidden="true"></i> Bởi sơn
-                                </span>
-                                <span class="short-time">
-                                    <i class="fa fa-calendar" aria-hidden="true"></i> 14/10/2019
-                                </span>
-                            </div>
-                            <a href="#" class="viewmore-blog" href="#">Đọc thêm</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
