@@ -13,48 +13,6 @@
 <body>
     <!-- Main-Header -->
     <div class="main-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="header-static hidden-xs hidden-sm">
-                        <ul>
-                            <i class="fa fa-envelope" aria-hidden="true"></i>
-                            <li>
-                                <a href="#" title="nst135@gmail.com">thucpham304@gmail.com</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="header-login">
-                        <ul>
-                            @if(Illuminate\Support\Facades\Auth::check())
-                                {{ Illuminate\Support\Facades\Auth::user()->name }}
-                                <li>
-                                <a href="{{route('logoutUser')}}" title="đăng nhập"> Đăng xuất </a>
-                                </li>
-                                <li>
-                                    <a href="dangki.html" title="đăng kí"> Đổi thông tin cá nhân </a>
-                                </li>
-
-                            @else 
-                                <li>
-                                <a href="login.html" title="đăng nhập"> Đăng nhập </a>
-                                </li>
-                                <li>
-                                    <a href="dangki.html" title="đăng kí"> Đăng kí </a>
-                                </li>
-                            @endif
-                           
-                           
-                            <a href="cart.html">
-                                <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                            </a>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
         @include('shop.header')
     </div>
 

@@ -106,11 +106,11 @@
 				<input type="hidden" name="status" value="0">
 			</div>
 			<div class="form-actions noborder">
-				<button type="submit" class="btn blue">Gửi thông tin</button>
+				<button type="submit" class="btn blue btn-add">Gửi thông tin</button>
 				<button type="button" class="btn green"><a href="{{route('home')}}" style="text-decoration: none; color: #fff;">Quay lại</a></button>
 			</div>
 		</form>
 	</div>
 </div>
-
 @endsection
+

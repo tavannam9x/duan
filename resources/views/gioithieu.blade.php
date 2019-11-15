@@ -13,7 +13,7 @@
 
 <body>
     <!-- Main-Header -->
-    <div class="main-header">
+    <!-- <div class="main-header">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -45,7 +45,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         @include('shop.header')
     </div>

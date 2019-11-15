@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use App\Models\Category;
+use RealRashid\SweetAlert\Facades\Aler;
+Use Alert;
 class ProductController extends Controller
 {
     public function index(Request $request){
@@ -66,6 +68,10 @@ class ProductController extends Controller
             $model->status = 0;
         }
         $model->fill($request->all());
+
+        //  if ($post) {
+        // alert()->success('Post Created', 'Successfully'); // hoặc có thể dùng alert('Post Created','Successfully', 'success');
+        // }
         //dd($model);
         $model->save();
         return redirect(route('home'));

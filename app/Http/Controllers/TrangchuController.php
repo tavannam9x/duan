@@ -9,6 +9,7 @@ use App\Models\Contact;
 use App\Models\Comment;
 use App\Models\User;
 use DB;
+use App\Http\Requests\ContactRequest;
 class TrangchuController extends Controller
 {
     public function index(Request $request){
@@ -27,6 +28,8 @@ class TrangchuController extends Controller
         return view('sanpham', compact('category_product','category_post','model','cate'));
     }
 
+    //Liên hệ
+
     public function lienhe(){
         $model = new Contact();
         $category_product= Category::where('category_type','=','0')->get();
@@ -34,7 +37,7 @@ class TrangchuController extends Controller
 
         return view('lienhe', compact('category_product','category_post','model'));
     }
-    public function saveAddnew(Request $request){
+    public function saveAddnew(ContactRequest $request){
         $model = new Contact();
         $dt = Carbon::now();
         if($request->date == null){
@@ -44,6 +47,8 @@ class TrangchuController extends Controller
         $model->save();
         return redirect(route('lienhe'));
     }
+
+    //Chi tiết sp
 
     public function saveAdd(Request $request, $id){
         $category_product= Category::where('category_type','=','0')->get();
@@ -57,7 +62,7 @@ class TrangchuController extends Controller
     }
 
 
-    public function saveAddpost(Request $request, $id){
+    public function saveAddpost(ContactRequest $request, $id){
         $category_product= Category::where('category_type','=','0')->get();
         $category_post= Category::where('category_type','=','1')->get();
         $cate=Post::find($id);

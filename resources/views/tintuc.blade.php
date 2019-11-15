@@ -16,38 +16,6 @@
 
     <!-- Main-Header -->
     <div class="main-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="header-static">
-                        <ul>
-                            <i class="fa fa-envelope" aria-hidden="true"></i>
-                            <li>
-                                <a href="#" title="nst135@gmail.com">thucpham304@gmail.com</a>
-                            </li>
-                            <li>
-                                <a href="#" title="Miễn phí ship cho đơn hàng trên 1tr VND">Miễn phí ship đơn hàng trên 1tr VND</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="header-login">
-                        <ul>
-                            <li>
-                                <a href="#" title="đăng nhập"> Đăng nhập </a>
-                            </li>
-                            <li>
-                                <a href="#" title="đăng kí"> Đăng kí </a>
-                            </li>
-                            <a href="cart.html">
-                                <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                            </a>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
 
        @include('shop.header')
     </div>

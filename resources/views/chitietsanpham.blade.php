@@ -15,36 +15,6 @@
 <body>
 
     <!-- Main-Header -->
-    <div class="main-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="header-static hidden-xs hidden-sm">
-                        <ul>
-                            <i class="fa fa-envelope" aria-hidden="true"></i>
-                            <li>
-                                <a href="#" title="nst135@gmail.com">thucpham304@gmail.com</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="header-login">
-                        <ul>
-                            <li>
-                                <a href="login.html" title="đăng nhập"> Đăng nhập </a>
-                            </li>
-                            <li>
-                                <a href="#" title="đăng kí"> Đăng kí </a>
-                            </li>
-                            <a href="cart.html">
-                                <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                            </a>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
         @include('shop.header')
     </div>
 

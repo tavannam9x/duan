@@ -15,35 +15,6 @@
 
     <!-- Main-Header -->
     <div class="main-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="header-static hidden-xs hidden-sm">
-                        <ul>
-                            <i class="fa fa-envelope" aria-hidden="true"></i>
-                            <li>
-                                <a href="#" title="nst135@gmail.com">thucpham304@gmail.com</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="header-login">
-                        <ul>
-                            <li>
-                                <a href="login.html" title="đăng nhập"> Đăng nhập </a>
-                            </li>
-                            <li>
-                                <a href="#" title="đăng kí"> Đăng kí </a>
-                            </li>
-                            <a href="cart.html">
-                                <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                            </a>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
         @include('shop.header')
     </div>
 
@@ -98,8 +69,12 @@
                             <input type="hidden" name="post_id" value="{{$cate->id}}">
                             <div class="form-group">
                                 <textarea class="form-control" id="exampleFormControlTextarea1" name="comment" rows="3" placeholder="Nội dung"></textarea>
+                                @if($errors->first('comment'))
+                                <span class="text-danger">{{$errors->first('comment')}}</span>
+                                @endif
                             </div>
-                            <button type="submit" style="margin-bottom: 30px;" class="btn btn-info">
+
+                            <button type="submit" style="margin-bottom: 30px;" class="btn btn-info btn-add">
                                 Gửi bình luận </button>
                         </form>
                     </div>

@@ -16,38 +16,6 @@
 
     <!-- Main-Header -->
     <div class="main-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="header-static">
-                        <ul>
-                            <i class="fa fa-envelope" aria-hidden="true"></i>
-                            <li>
-                                <a href="#" title="nst135@gmail.com">thucpham304@gmail.com</a>
-                            </li>
-                            <li>
-                                <a href="#" title="Miễn phí ship cho đơn hàng trên 1tr VND">Miễn phí ship đơn hàng trên 1tr VND</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="header-login">
-                        <ul>
-                            <li>
-                                <a href="#" title="đăng nhập"> Đăng nhập </a>
-                            </li>
-                            <li>
-                                <a href="#" title="đăng kí"> Đăng kí </a>
-                            </li>
-                            <a href="cart.html">
-                                <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                            </a>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         @include('shop.header')
     </div>
@@ -83,17 +51,36 @@
                     <div class="contact-form">
                         <form action="{{route('lienhe')}}" method="post">
                             @csrf
+
+                            @if(Illuminate\Support\Facades\Auth::check())
+                            <div class="form-group">
+                                <label for="exampleInputEmail1"> Họ tên
+                                    <span style="color: red">*</span>
+                                </label>
+                                <input type="text" class="form-control" value="{{ Illuminate\Support\Facades\Auth::user()->name }}" id="exampleInputEmail1" name="name" aria-describedby="emailHelp" placeholder="" readonly="true">
+                            </div>
+                            @else{
                             <div class="form-group">
                                 <label for="exampleInputEmail1"> Họ tên
                                     <span style="color: red">*</span>
                                 </label>
                                 <input type="text" class="form-control" id="exampleInputEmail1" name="name" aria-describedby="emailHelp" placeholder="">
+                                @if($errors->first('name'))
+                                <span class="text-danger">{{$errors->first('name')}}</span>
+                                @endif
                             </div>
+                            }
+                            @endif
+
+
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Email
                                     <span style="color: red">*</span>
                                 </label>
                                 <input type="text" class="form-control" name="email" id="exampleInputPassword1" placeholder="">
+                                @if($errors->first('email'))
+                                <span class="text-danger">{{$errors->first('email')}}</span>
+                                @endif
                             </div>
                             <input type="hidden" name="status" class="form-control" value="1" placeholder="">
                             <div class="form-group">
@@ -101,14 +88,20 @@
                                     <span style="color: red">*</span>
                                 </label>
                                 <input type="number" name="phone_number" class="form-control" id="exampleInputPassword1" placeholder="">
+                                @if($errors->first('phone_number'))
+                                <span class="text-danger">{{$errors->first('phone_number')}}</span>
+                                @endif
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1"> Nội dung
                                     <span style="color: red">*</span>
                                 </label>
                                 <textarea class="form-control" id="exampleFormControlTextarea1" name="content" rows="3" placeholder=""></textarea>
+                                @if($errors->first('content'))
+                                <span class="text-danger">{{$errors->first('content')}}</span>
+                                @endif
                             </div>
-                            <button type="submit" style="margin-top: 30px; margin-bottom: 30px;" class="btn btn-info">
+                            <button type="submit" style="margin-top: 30px; margin-bottom: 30px;" class="btn btn-info btn-add">
                                 Gửi liên hệ </button>
                         </form>
                     </div>
@@ -151,7 +144,5 @@
         </div>
     </div>
 
-    <!-- Main Brands -->
-    @include('shop.brand')
 
 </html>
