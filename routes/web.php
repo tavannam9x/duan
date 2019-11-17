@@ -87,6 +87,17 @@ Route::get('/dangnhap', 'DangkiController@Login')->name('dangnhap.add');
 Route::post('/dangnhap', 'DangkiController@postLogin');
 Route::get('/dangxuat', 'DangkiController@logoutus')->name('logoutUser');
 
+
+Route::get('cart', 'CartController@cart')->name('cart.add');
+Route::post('cart', 'CartController@saveCart');
+
+Route::get('add-to-cart/{id}', 'CartController@addToCart');
+
+Route::patch('update-cart', 'CartController@update');
+
+Route::delete('remove-from-cart', 'CartController@remove');
+
+
 Route::get('cp-login', 'Auth\LoginController@loginForm')->name('login');
 Route::post('cp-login', 'Auth\LoginController@postLogin');
 Route::any('logout', 'Auth\LoginController@logout')->name('logout');

@@ -50,11 +50,6 @@ class CategoryController extends Controller
     }
     public function saveEdit(CategoryRequest $request){
         $model = Category::find($request->id);
-        if($request->hasFile('image')){
-            $path = $request->file('image')->storeAs('products', 
-            str_replace(' ', '-', uniqid() . '-' .$request->image->getClientOriginalName()));
-            $model->image = '../images/'.$path;
-        }
         $model->fill($request->all());
         $model->save();
         return redirect(route('homehome'));

@@ -8,6 +8,9 @@ use App\Models\Post;
 use App\Models\Contact;
 use App\Models\Comment;
 use App\Models\User;
+use App\Models\Slideshow;
+
+use App\Models\Slideshowchildren;
 use DB;
 use App\Http\Requests\ContactRequest;
 class TrangchuController extends Controller
@@ -15,9 +18,24 @@ class TrangchuController extends Controller
     public function index(Request $request){
         $category_product= Category::where('category_type','=','0')->get();
         $category_post= Category::where('category_type','=','1')->get();
+        $slide = Slideshow::all()->where('status','=','1');
+        $slideshow= Slideshowchildren::all()->take(1);
+        foreach ($slide as $key => $sli) {
+        
+            $parent= $sli->id;
+            $st= $sli->status;  
+            if($st == 1){
+            $slideshow = Slideshowchildren::all()->where('parent_id','==',$parent);
+            }else{
+                $slideshow= Slideshowchildren::all()->rand(1);
+            }      
+        }
+
+
+
         $model = DB::table('product')->orderBy('views', 'desc')->take(5)->get();
         $post = DB::table('post')->where('status',2)->orderBy('views', 'desc')->take(3)->get();
-        return view('home', compact('category_product','category_post','model','post'));
+        return view('home', compact('category_product','category_post','model','post','slideshow','slide'));
     }
 
     public function sanpham($id){
@@ -53,7 +71,7 @@ class TrangchuController extends Controller
     public function saveAdd(Request $request, $id){
         $category_product= Category::where('category_type','=','0')->get();
         $category_post= Category::where('category_type','=','1')->get();
-        $cate=Product::find($id);
+        $cate=Product::find($id);    
         $cm= new Comment();
         $model = Product::all()->where('id','!=',$id);
         $cm->fill($request->all());

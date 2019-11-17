@@ -52,7 +52,7 @@
                         <!-- phần này là inclu cái đánh giá sao nhé-->
                         @include('shop.dist.star')
 
-                        <p> {{$cate->list_price}} VNĐ</p>
+                        <p> {{$cate->price}} VNĐ</p>
                         <p style="text-decoration:line-through;"> {{$cate->sell_price}} VNĐ</p>
                         <p> Nguồn gốc: Việt Nam </p>
                         <p> Khối lượng: 1kg/1hộp </p>

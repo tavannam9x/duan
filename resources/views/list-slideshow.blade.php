@@ -47,26 +47,23 @@
               </div>
             </div>
             <div class="portlet-body flip-scroll">
-              <table class="table table-bordered table-striped table-condensed flip-content">
+              <table class="table table-striped ">
               <thead class="flip-content">
               <tr>
                   <th>
                      ID
                   </th>
-                   <th>
-                     Ảnh slideshow
+                  <th>
+                     Tên sự kiện
                   </th>
                   <th>
-                     Mô tả slideshow
+                     Mô tả sự kiện
                   </th>
                   <th>
                      Trạng thái
                   </th>
                   <th>
-                     Thứ tự slide show
-                  </th>
-                  <th>
-                     <a href="{{route('slideshow.add')}}" class="btn default btn-xs blue">
+                     <a href="{{route('slideshow.add')}}" class="btn btn-primary">
                       <i class="fa fa-plus"></i> Thêm</a>
                   </th>
                 </tr>
@@ -78,44 +75,31 @@
                      {{$sl->id}}
                   </td>
                   <td>
-                     <img src="{{$sl->image}}" width="200">
+                      {{$sl->name}}
                   </td>
-                  <td style="
-                      display:block;
-                      padding:5px;
-                      margin-top:5px;
-                      width:250px;
-                      height:200px;
-                      overflow:scroll;
-                      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-                      border-radius: 10px;
-                      background-color: #F5F5F5;
-                      border-radius: 10px;
-                      ">
+                  <td>
                       {{$sl->description}}
-                    
                   </td>
                   <td>
                      @if($sl->status == 0)
-                       <p class="label label-sm label-warning">Ẩn danh mục</p>
+                       <p class="btn btn-warning">Ẩn slideshow</p>
                       @elseif($sl->status == 1)
-                       <p class="label label-sm label-success">Hiển thị</p>
+                       <p class="btn btn-success">Hiển thị</p>
                       @endif
                   </td>
                   <td>
-                     {{$sl->order_slide}}
-                  </td> 
-                  <td>
-                    <a href="{{route('slideshow.edit', ['id' => $sl->id])}}" class="btn default btn-xs green">
+                    <a href="{{route('imageSlide', ['id' => $sl->id])}}" class="btn btn-info">
+                    <i class="fa fa-edit"></i> List ảnh slide </a>
+                    <a href="{{route('slideshow.edit', ['id' => $sl->id])}}" class="btn btn-success">
                     <i class="fa fa-edit"></i> Sửa </a>
-                    <a href="javascript:;" linkurl="{{route('slideshow.remove', ['id' => $sl->id])}}" class="btn default btn-xs red xoa">
+                    <a href="javascript:;" linkurl="{{route('slideshow.remove', ['id' => $sl->id])}}" class="btn btn-danger xoa">
                     <i class="fa fa-trash-o"></i> Xóa </a>
                   </td>
                 </tr>
               </tbody>
               @endforeach
               <tr>
-                <td colslan="13" class="text-center">{{$slide->links()}}</td>
+                <td colspan="5" class="text-center">{{$slide->links()}}</td>
               </tr>
               </table>
           </div>

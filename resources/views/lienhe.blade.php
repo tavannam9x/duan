@@ -51,7 +51,6 @@
                     <div class="contact-form">
                         <form action="{{route('lienhe')}}" method="post">
                             @csrf
-
                             @if(Illuminate\Support\Facades\Auth::check())
                             <div class="form-group">
                                 <label for="exampleInputEmail1"> Họ tên

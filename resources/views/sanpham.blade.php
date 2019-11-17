@@ -7,13 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Nền tảng quản lý & bán hàng tốt nhất cho bạn</title>
 
-
     @include('shop.script')
 
 </head>
 
 
 <body>
+
     <!-- Main-Header -->
     <div class="main-header">
 
@@ -37,6 +37,10 @@
             </div>
         </div>
     </div>
+
+
+
+
     <!-- Category products -->
     <div class="category-products">
         <div class="container">
@@ -58,7 +62,7 @@
                                         <a href="{{route('chitietsp', ['id' => $pr->id])}}" class="icon one" title="Xem chi tiết">
                                             <i style="font-size: 14px;" class="fa fa-search" aria-hidden="true"></i>
                                         </a>
-                                        <a href="cart.html" class="icon two" title="Giỏ hàng">
+                                        <a href="{{ url('add-to-cart/'.$pr->id) }}" class="icon two" title="Giỏ hàng">
                                             <i style="font-size: 14px;" class="fa fa-cart-plus" aria-hidden="true"></i>
                                         </a>
                                     </div>

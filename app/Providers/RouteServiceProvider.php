@@ -53,6 +53,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapWebsite();
         $this->mapUser();
         $this->mapComment();
+        $this->mapSlideImageRoutes();
 
 
         //
@@ -105,6 +106,14 @@ class RouteServiceProvider extends ServiceProvider
              ->prefix('admin2/slideshow')
              ->namespace($this->namespace)
              ->group(base_path('routes/slideshow.php'));
+    }
+
+    protected function mapSlideImageRoutes()
+    {
+        Route::middleware('web','auth','mod.check')
+             ->prefix('admin2/slideshow/image')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/slideshow_children.php'));
     }
 
     protected function mapContactRoutes()

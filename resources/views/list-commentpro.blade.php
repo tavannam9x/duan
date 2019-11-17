@@ -66,7 +66,7 @@
                   </tr>
                 </thead>
                 @foreach($binhluan as $lh)
-                @if($lh->product_id != "")
+                @if($lh->product_id != 0)
                 <tbody>
                 <tr>
                     <td>

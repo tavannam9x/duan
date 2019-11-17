@@ -65,6 +65,7 @@
 					<span class="text-danger">{{$errors->first('description')}}</span>
 					@endif
 				</div>
+				
 				<input type="hidden" name="views" value="{{old('views', $model->views)}}" class="form-control">
 				<div class="form-group form-md-line-input has-success form-md-floating ">
 					<div class="input-icon right">
@@ -91,11 +92,12 @@
 						@endif
 					</div>
 				</div>
+
 				<input type="hidden" name="status" value="{{old('status', $model->status)}}" class="form-control">
 			</div>
 			<div class="form-actions noborder">
-				<button type="submit" class="btn blue">Gửi thông tin</button>
-				<button type="button" class="btn green"><a href="{{route('homepost')}}" style="text-decoration: none; color: #fff;">Quay lại</a></button>
+				<button type="submit" class="btn btn-primary">Gửi thông tin</button>
+				<button type="button" class="btn btn-danger"><a href="{{route('homepost')}}" style="text-decoration: none; color: #fff;">Quay lại</a></button>
 			</div>
 		</form>
 	</div>

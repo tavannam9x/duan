@@ -34,14 +34,14 @@
 						@endif
 					</div>
 				</div>
-				<div class="form-group form-md-line-input has-success form-md-floating">
+				<div class="form-group form-md-line-input ">
 					<div class="input-icon">
 						<input type="file" name="image" value="" class="form-control">
-						<label for="form_control_1">Ảnh sản phẩm</label>
-						@if($errors->first('image'))
-						<span class="text-danger">{{$errors->first('image')}}</span>
-						@endif
+						<label for="form_control">Ảnh sản phẩm</label>
 					</div>
+					@if($errors->first('image'))
+					<span class="text-danger">{{$errors->first('image')}}</span>
+					@endif
 				</div>
 				<div class="form-group form-md-line-input has-success form-md-floating-label">
 					<div class="input-icon right">
@@ -95,19 +95,17 @@
 				</div>
 				<input type="hidden" name="views" value="0" class="form-control">
 				<div class="form-group form-md-line-input has-success form-md-floating-lable">
-					<div class="input-icon">
-						<input type="date" name="expiry_date" value="" style="width: 300px; border: 2px solid #d2f6d3; border-radius: 3px;">
-						<label for="form_control_1">Hạn sử dụng</label>
+						<input type="date" name="expiry_date" class="form-control" value="" style="width: 300px; border: 2px solid #d2f6d3; border-radius: 3px;">
+						<label for="form_control">Hạn sử dụng</label>
 						@if($errors->first('expiry_date'))
 						<span class="text-danger">{{$errors->first('expiry_date')}}</span>
 						@endif
-					</div>
 				</div>
 				<input type="hidden" name="status" value="0">
 			</div>
 			<div class="form-actions noborder">
-				<button type="submit" class="btn blue btn-add">Gửi thông tin</button>
-				<button type="button" class="btn green"><a href="{{route('home')}}" style="text-decoration: none; color: #fff;">Quay lại</a></button>
+				<button type="submit" class="btn btn-primary">Gửi thông tin</button>
+				<button type="button" class="btn btn-danger"><a href="{{route('home')}}" style="text-decoration: none; color: #fff;">Quay lại</a></button>
 			</div>
 		</form>
 	</div>

@@ -48,7 +48,7 @@
                 </div>
               </div>
               <div class="portlet-body flip-scroll">
-                <table class="table table-bordered table-striped table-condensed flip-content">
+                <table class="table table-striped ">
                 <thead class="flip-content">
                 <tr>
                     <th>
@@ -79,7 +79,7 @@
                       Quyền
                     </th>
                     <th>
-                      <a href="{{route('user.add')}}" class="btn default btn-xs blue">
+                      <a href="{{route('user.add')}}" class="btn btn-primary">
                       <i class="fa fa-plus"></i>Thêm</a>
                     </th>
                   </tr>
@@ -87,14 +87,14 @@
                 @foreach($taikhoan as $tk)
                 <tbody>
                 <tr>
-                    <td>
+                    <td style="width: 50px;">
                        {{$tk->id}}
                     </td>
-                    <td>
+                    <td style="width: 180px;">
                        {{$tk->name}}
                     </td>
                     <td>
-                       {{$tk->image}}
+                       <img src="{{$tk->image}}" style="width: 130px;">
                     </td>
                     <td>
                        {{$tk->phone_number}}
@@ -115,19 +115,19 @@
                     </td>
                     <td>
                     @if($tk->role == "Admin")
-                     <p class="label label-success">Admin</p>
+                     <p class="btn btn-danger">Admin</p>
                     @elseif($tk->role == "Edirtor")
-                     <p class="label label-info">Editor</p>
+                     <p class="btn btn-success">Editor</p>
                      @elseif($tk->role == "Shipper")
-                     <p class="label label-warning">Shipper</p>
+                     <p class="btn btn-info">Shipper</p>
                      @else
-                     <p class="label label-primary">Member</p>
+                     <p class="btn btn-warning">Member</p>
                     @endif
                     </td>
                     <td>
-                      <a href="{{route('users.edit', ['id' => $tk->id])}}" class="btn default btn-xs green">
+                      <a href="{{route('users.edit', ['id' => $tk->id])}}" class="btn btn-success">
                       <i class="fa fa-edit"></i> Sửa </a>
-                      <a href="javascript:;" linkurl="{{route('user.remove', ['id' => $tk->id])}}" class="btn default btn-xs red xoa">
+                      <a href="javascript:;" linkurl="{{route('user.remove', ['id' => $tk->id])}}" class="btn btn-danger xoa">
                       <i class="fa fa-trash-o"></i> Xóa </a>
                     </td>
                   </tr>

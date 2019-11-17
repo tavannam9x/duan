@@ -1,6 +1,6 @@
 <?php
 use Illuminate\Http\Request;
-use App\Http\Requests\CategoryRequest;
+
 use App\Models\Category;
 
 Route::get('/', 'CategoryController@index')->name('homehome');

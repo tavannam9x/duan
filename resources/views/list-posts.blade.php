@@ -49,7 +49,7 @@
                 </div>
               </div>
               <div class="portlet-body flip-scroll">
-                <table class="table table-bordered table-striped table-condensed flip-content">
+                <table class="table table-striped">
                 <thead class="flip-content">
                 <tr>
                     <th>
@@ -65,25 +65,26 @@
                        Tóm tắt nội dung
                     </th>
                     <th>
-                       Danh mục bài viết
+                      Chi tiết nội dung
+                    </th>
+                    <th>
+                       Danh mục
                     </th>
                     <th>
                        Lượt xem
                     </th>
-                    <th style="width:100px;">
-                      Chi tiết nội dung
-                    </th>
                     <th>
                       Ngày đăng bài
+                    </th>
+                    
+                    <th>
+                      Tác giả
                     </th>
                     <th>
                       Trạng thái
                     </th>
                     <th>
-                      Tác giả bài viết
-                    </th>
-                    <th>
-                     <a href="{{route('post.add')}}" class="btn default btn-xs blue">
+                     <a href="{{route('post.add')}}" class="btn btn-primary">
                       <i class="fa fa-plus"></i> Thêm</a>
                     </th>
                   </tr>
@@ -94,15 +95,27 @@
                     <td>
                        {{$bv->id}}
                     </td>
-                    <td style="width: 100px;">
+
+                    <td style="width: 150px;">
                        {{$bv->title}}
                     </td>
+
                     <td>
                        <img src="{{$bv->image}}" style="width: 200px;">
                     </td>
+
                     <td style="width: 200px;">
-                       {{$bv->short_desc}}
+                       {{Str::limit($bv->short_desc, $limit = 50, $end = '...')}}
                     </td>
+
+                    <td style="width: 250px;">
+                        <div class="portlet-body" style="width: 250px;">
+                          <div class="scroller" style="height:250px;" data-rail-visible="1" data-rail-color="yellow" data-handle-color="#a1b2bd">
+                            {!!Str::limit($bv->description, $limit = 300, $end = '...')!!}
+                          </div>
+                        </div>
+                    </td>
+
                     <td>
                        @isset($bv->post->name)
                         {{$bv->post->name}}
@@ -115,13 +128,6 @@
                         {!!$bv->description!!}
                       
                     </td> -->
-                    <td style="width: 400px;">
-                      <div class="portlet-body" style="width: 400px;">
-                      <div class="scroller" style="height:200px;" data-rail-visible="1" data-rail-color="yellow" data-handle-color="#a1b2bd">
-                        {!!$bv->description!!}
-                      </div>
-                    </div>
-                    </td>
                     <!-- <td style="overflow: scroll; height: 100px;">
                     {!!$bv->description!!}
                     </td> -->
@@ -129,21 +135,21 @@
                        {{$bv->date}}
                     </td>
                     <td>
-                      @if($bv->status == 1)
-                       <p class="label label-sm label-warning">Đang chờ duyệt</p>
-                       <a href="{{route('post.edits', ['id' => $bv->id])}}" class="btn default btn-xs green">
-                       <i class="fa fa-edit"></i> Sửa </a>
-                      @elseif($bv->status == 2)
-                       <p class="label label-sm label-success">Đã duyệt</p>
-                      @endif
-                    </td>
-                    <td>
                        {{$bv->author}}
                     </td>
                     <td>
-                      <a href="{{route('post.edit', ['id' => $bv->id])}}" class="btn default btn-xs green">
+                      @if($bv->status == 1)
+                       <p class="label label-sm label-warning">Đang chờ duyệt</p>
+                       <a href="{{route('post.edits', ['id' => $bv->id])}}" class="btn btn-warning">
+                       <i class="fa fa-edit"></i> Sửa </a>
+                      @elseif($bv->status == 2)
+                       <p class="btn btn-success">Đã duyệt</p>
+                      @endif
+                    </td>
+                    <td>
+                      <a href="{{route('post.edit', ['id' => $bv->id])}}" class="btn btn-primary">
                       <i class="fa fa-edit"></i> Sửa </a>
-                      <a href="javascript:;" linkurl="{{route('post.remove', ['id' => $bv->id])}}" class="btn default btn-xs red xoa">
+                      <a href="javascript:;" linkurl="{{route('post.remove', ['id' => $bv->id])}}" class="btn btn-danger xoa">
                       <i class="fa fa-trash-o"></i> Xóa </a>
                     </td>
                   </tr>

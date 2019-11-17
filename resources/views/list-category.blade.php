@@ -28,7 +28,7 @@
   <input style="width: 1000px; margin: auto;" class="nav-item form-control mr-sm-2" type="text" name="keyword" placeholder="tìm kiếm.....">
 </form> -->
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-8" style="margin-left:265px;" >
           <div class="col-md-12">
             <!-- BEGIN CONDENSED TABLE PORTLET-->
             <div class="portlet box green">
@@ -48,7 +48,7 @@
                 </div>
               </div>
               <div class="portlet-body flip-scroll">
-                <table class="table table-bordered table-striped table-condensed flip-content">
+                <table class="table table-condensed">
                 <thead class="flip-content">
                 <tr>
                     <th>
@@ -67,7 +67,7 @@
                       Trạng thái
                     </th>
                     <th>
-                     <a href="{{route('category.add')}}" class="btn default btn-xs blue">
+                     <a href="{{route('category.add')}}" class="btn btn-success">
                       <i class="fa fa-plus"></i> Thêm</a>
                     </th>
                   </tr>
@@ -81,8 +81,8 @@
                     <td>
                        {{$lh->name}}
                     </td>
-                    <td>
-                       {{$lh->description}}
+                    <td style="width: 200px;">
+                       {{Str::limit($lh->description, $limit = 30, $end = '...')}}
                     </td>
                     <td>
                        @if($lh->category_type == 0)
@@ -93,15 +93,15 @@
                     </td>
                     <td>
                       @if($lh->status == 0)
-                       <p class="label label-sm label-warning">Ẩn danh mục</p>
+                       <p class="btn btn-warning">Ẩn danh mục</p>
                       @elseif($lh->status == 1)
-                       <p class="label label-sm label-success">Hiển thị</p>
+                       <p class="btn btn-success">Hiển thị</p>
                       @endif
                     </td>
                     <td>
-                      <a href="{{route('category.edit', ['id' => $lh->id])}}" class="btn default btn-xs green">
+                      <a href="{{route('category.edit', ['id' => $lh->id])}}" class="btn btn-primary">
                       <i class="fa fa-edit"></i> Sửa </a>
-                      <a href="javascript:;" linkurl="{{route('category.remove', ['id' => $lh->id])}}" class="btn default btn-xs red xoa"><i class="fa fa-trash-o"></i> Xóa </a>
+                      <a href="javascript:;" linkurl="{{route('category.remove', ['id' => $lh->id])}}" class="btn default btn-danger red xoa"><i class="fa fa-trash-o"></i> Xóa </a>
                     </td>
                   </tr>
                 </tbody>

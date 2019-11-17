@@ -3,10 +3,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 class Slideshow extends Model
 {
-    protected $table = 'slide_show';
+    protected $table = 'slideshow_parent';
     protected $fillable = [
-    	'description',
-    	'link', 'status','order_slide'
+    	'name',
+    	'description', 'status'
     ];
     
 }

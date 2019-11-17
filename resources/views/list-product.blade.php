@@ -47,7 +47,7 @@
               </div>
             </div>
             <div class="portlet-body flip-scroll">
-              <table class="table table-bordered table-striped table-condensed flip-content">
+              <table class="table table-striped ">
               <thead class="flip-content">
               <tr>
                   <th>
@@ -60,7 +60,7 @@
                      Ảnh sản phẩm
                   </th>
                   <th>
-                     Giá Niêm Yết
+                     Giá niêm yết
                   </th>
                   <th>
                      Giá khuyến mãi
@@ -69,7 +69,7 @@
                      Mô tả ngắn
                   </th>
                   <th>
-                     Mô tả chi tiết sản phẩm
+                     Mô tả chi tiết
                   </th>
                   <th>
                     Danh Mục
@@ -78,13 +78,14 @@
                     Lượt xem
                   </th>
                   <th>
-                    Trang thái
-                  </th>
-                  <th>
                     Hạn sử dụng
                   </th>
                   <th>
-                     <a href="{{route('product.add')}}" class="btn default btn-xs blue">
+                    Trang thái
+                  </th>
+                  
+                  <th>
+                     <a href="{{route('product.add')}}" class="btn btn-primary">
                       <i class="fa fa-plus"></i> Thêm</a>
                   </th>
                 </tr>
@@ -95,52 +96,53 @@
                   <td>
                      {{$sp->id}}
                   </td>
-                  <td>
+                  <td style="width: 150px;">
                      {{$sp->name}}
                   </td>
                   <td style="width: 130px;">
                      <img src="{{$sp->image}}" style="width: 130px;">
                   </td>
-                  <td>
+                  <td style="width: 130px;">
                      {{$sp->list_price}}
                   </td>
-                  <td>
+                  <td style="width: 150px;">
                      {{$sp->sell_price}}
                   </td>
-                  <td style="width: 200px;">
-                     {{$sp->short_desc}}
+                  <td style="width: 100px;">
+                     {{Str::limit($sp->short_desc, $limit = 50, $end = '...')}}
                   </td>
-                  <td style="width: 400px;">
-                      <div class="portlet-body" style="width: 400px;">
-                      <div class="scroller" style="height:200px;" data-rail-visible="1" data-rail-color="yellow" data-handle-color="#a1b2bd">
-                        {!!$sp->description!!}
+                  <td>
+                      <div class="portlet-body" style="width: 220px;">
+                      <div class="scroller" style="height:100px;" data-rail-visible="1" data-rail-color="yellow" data-handle-color="#a1b2bd">
+                        {!!Str::limit($sp->description, $limit = 300, $end = '...')!!}
                       </div>
                   </div>
                   </td>
-                  <td>
+                  <td style="width: 130px;">
                      @isset($sp->product->name)
                         {{$sp->product->name}}
                      @endisset
                   </td>
-                  <td>
+                  <td style="width: 100px;">
                      {{$sp->views}}
                   </td>
-                  <td>
-                     @if($sp->status == 0)
-                     <p class="label label-sm label-warning">Đang chờ duyệt</p>
-                     <a href="{{route('product.edits', ['id' => $sp->id])}}" class="btn default btn-xs green">
-                     <i class="fa fa-edit"></i> Sửa </a>
-                    @elseif($sp->status == 1)
-                     <p class="label label-sm label-success">Đã duyệt</p>
-                    @endif
-                  </td>
-                  <td>
+                  <td style="width: 130px;">
                      {{$sp->expiry_date}}
                   </td>
                   <td>
-                    <a href="{{route('product.edit', ['id' => $sp->id])}}" class="btn default btn-xs green">
+                     @if($sp->status == 0)
+                     <p class="btn btn-warning">Đang chờ duyệt</p>
+                     <a href="{{route('product.edits', ['id' => $sp->id])}}" class="btn btn-primary" style="margin-top: 10px;">
+                     <i class="fa fa-edit"></i> Sửa </a>
+                    @elseif($sp->status == 1)
+                     <p class="btn btn-primary primary">Đã duyệt</p>
+                    @endif
+                  </td>
+                  
+                  <td>
+                    <a href="{{route('product.edit', ['id' => $sp->id])}}" class="btn btn-success">
                     <i class="fa fa-edit"></i> Sửa </a>
-                    <a href="javascript:;" linkurl="{{route('product.remove', ['id' => $sp->id])}}" class="btn default btn-xs red xoa">
+                    <a href="javascript:;" linkurl="{{route('product.remove', ['id' => $sp->id])}}" class="btn default btn-danger red xoa" style="margin-top:10px;">
                     <i class="fa fa-trash-o"></i> Xóa </a>
                   </td>
                 </tr>

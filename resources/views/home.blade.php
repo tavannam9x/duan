@@ -18,26 +18,47 @@
 
     <!-- Main-Slide -->
     <div class="main-slide">
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="../../../shop/image/banner-banchuan.jpg" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="../../../shop/image/banner-banchuan1.jpg" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="../../../shop/image/banner-banchuan2.jpg" class="d-block w-100" alt="...">
-                </div>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <?php $i=0; ?>
+            @foreach($slideshow as $sl)
+            @if($sl->status == 1)
+            <li data-target="#carouselExampleIndicators" data-slide-to="{{$i}}" 
+
+            @if($i == 0)
+            class="active"
+            @endif
+            ></li>
+            <?php $i++; ?>
+            @endif
+            @endforeach
+          </ol>
+          <div class="carousel-inner">
+            <?php $i=0; ?>
+            @foreach($slideshow as $sl)
+            @if($sl->status == 1)
+            <div 
+            @if($i == 0)
+            class="carousel-item active"
+            @else
+            class="carousel-item"
+            @endif
+            >
+            <?php $i++; ?>
+              <img class="d-block w-100" src="{{$sl->image}}" alt="First slide">
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+            @endif
+            @endforeach
+            
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
     </div>
 
@@ -167,7 +188,7 @@
                                 </a>
                             </div>
                             <div class="category-products-price">
-                                <span> {{$spnb->list_price}} </span>
+                                <span> {{$spnb->price}} </span>
                             </div>
                         </div>
                     </div>
@@ -233,7 +254,7 @@
                                {{$spkm->sell_price}} VNĐ
                             </span>
                             <strike style="padding: 0 10px; color: #acacac;">
-                                {{$spkm->list_price}} VNĐ
+                                {{$spkm->price}} VNĐ
                             </strike> 
                         </div>
                     </div>

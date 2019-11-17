@@ -50,18 +50,19 @@
 						</select>
 					</div>
 				</div>
-				<div class="form-group form-md-line-input has-success form-md-floating">
+				<div class="form-group form-md-line-input has-success form-md-floating-label">
 					<div class="input-icon right">
-						<input type="text" name="status" value="{{old('status', $model->status)}}" class="form-control">
 						<label for="form_control_1">Trạng thái danh mục</label>
-						<span class="help-block">Mời bạn nhập trạng thái danh mục</span>
-						<i class="icon-user"></i>
+						<select name="category_type" class="form-control">
+							<option value="1">Hiển thị</option>
+							<option value="0">Ẩn</option>
+						</select>
 					</div>
 				</div>
 			</div>
 			<div class="form-actions noborder">
-				<button type="submit" class="btn blue">Gửi thông tin</button>
-				<button type="button" class="btn green"><a href="{{route('homehome')}}" style="text-decoration: none; color: #fff;">Quay lại</a></button>
+				<button type="submit" class="btn btn-primary">Gửi thông tin</button>
+				<button type="button" class="btn btn-danger"><a href="{{route('homehome')}}" style="text-decoration: none; color: #fff;">Quay lại</a></button>
 			</div>
 		</form>
 	</div>

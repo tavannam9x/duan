@@ -32,11 +32,11 @@
 					</div>
 				</div> -->
 				<div class="form-group form-md-line-input has-success form-md-floating-label">
-					<div class="input-icon">
-						<input type="file" name="image" value="" class="form-control">
-						
-						<span class="help-block">Mời bạn nhập ảnh slideshow </span>
-						<i class="fa fa-bell-o"></i>
+					<div class="input-icon right">
+						<input type="text" name="name" value="" class="form-control">
+						<label for="form_control_1">Tên slideshow</label>
+						<span class="help-block">Mời bạn nhập tên slideshow slideshow</span>
+						<i class="icon-user"></i>
 					</div>
 				</div>
 				<div class="form-group form-md-line-input has-success form-md-floating-label">
@@ -47,27 +47,10 @@
 						<i class="icon-user"></i>
 					</div>
 				</div>
-				<div class="form-group form-md-line-input has-success form-md-floating-label">
-					<div class="input-icon right">
-						<input type="text" name="status" value="" class="form-control">
-						<label for="form_control_1">Trạng thái slideshow</label>
-						<span class="help-block">Mời bạn nhập trạng thái slideshow</span>
-						<i class="icon-user"></i>
-					</div>
-				</div>
-				<div class="form-group form-md-line-input has-success form-md-floating-label">
-					<div class="input-icon right">
-						<input type="text" name="order_slide" value="" class="form-control">
-						<label for="form_control_1">Số thứ tự slideshow</label>
-						<span class="help-block">Mời bạn nhập số thứ tự slideshow</span>
-						<i class="icon-user"></i>
-					</div>
-				</div>
+				<input type="hidden" name="status" value="0">
 			</div>
-			<div class="form-actions noborder">
-				<button type="submit" class="btn blue">Gửi thông tin</button>
-				<button type="button" class="btn green"><a href="{{route('homeslide')}}" style="text-decoration: none; color: #fff;">Quay lại</a></button>
-			</div>
+			<button type="submit" class="btn btn-primary">Gửi thông tin</button>
+				<button type="button" class="btn btn-danger"><a href="{{route('homeslide')}}" style="text-decoration: none; color: #fff;">Quay lại</a></button>
 		</form>
 	</div>
 </div>

@@ -106,10 +106,12 @@ form .stars span {
 		<span></span>
 	</div>
   <input type="hidden" name="product_id" value="{{$cate->id}}">
-  <input type="hidden" name="status" value="0">
+  <input type="hidden" name="status" value="1">
+  @if(Illuminate\Support\Facades\Auth::check())
   <input type="hidden" class="form-control" name="name" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" value="{{ Illuminate\Support\Facades\Auth::user()->name }}" readonly="true">
   <button type="submit" style="margin-top: 30px; margin-bottom: 30px;" class="btn btn-info">
                                 Gửi đánh giá </button>
+  @endif
 </form>
 <!-- partial -->
   

@@ -78,9 +78,9 @@
 							Danh sách slideshow</a>
 						</li>
 						<li>
-							<a href="{{route('slideshow.add')}}">
+							<a href="{{route('homeslideimg')}}">
 							<i class="fa fa-plus-square"></i>
-							Thêm slideshow</a>
+							Ảnh slideshow</a>
 						</li>
 					</ul>
 				</li>

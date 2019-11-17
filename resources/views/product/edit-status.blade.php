@@ -35,8 +35,8 @@
 				</div>
 			</div>
 			<div class="form-actions noborder">
-				<button type="submit" class="btn blue">Gửi thông tin</button>
-				<button type="button" class="btn green"><a href="{{route('home')}}" style="text-decoration: none; color: #fff;">Quay lại</a></button>
+				<button type="submit" class="btn btn-primary">Gửi thông tin</button>
+				<button type="button" class="btn btn-danger"><a href="{{route('home')}}" style="text-decoration: none; color: #fff;">Quay lại</a></button>
 			</div>
 		</form>
 	</div>

@@ -23,19 +23,11 @@
 		<form action="{{route('slideshow.edit', ['id' => $model->id])}}" method="post" enctype="multipart/form-data">
 			@csrf
 			<div class="form-body">
-				<!-- <div class="form-group form-md-line-input has-success form-md-floating ">
-					<div class="input-icon">
-						<input type="text" name="Name" value="{{old('Name', $model->Name)}}" class="form-control">
-						<label for="form_control_1">Tên slideshow</label>
-						<span class="help-block">Mời bạn nhập tên slideshow</span>
-						<i class="fa fa-bell-o"></i>
-					</div>
-				</div> -->
 				<div class="form-group form-md-line-input has-success form-md-floating ">
 					<div class="input-icon">
-						<input type="file" name="image" value="{{old('image', $model->image)}}" class="form-control">
-						
-						<span class="help-block">Mời bạn nhập ảnh slideshow </span>
+						<input type="text" name="name" value="{{old('name', $model->name)}}" class="form-control">
+						<label for="form_control_1">Tên slideshow</label>
+						<span class="help-block">Mời bạn nhập tên slideshow</span>
 						<i class="fa fa-bell-o"></i>
 					</div>
 				</div>
@@ -47,34 +39,19 @@
 						<i class="icon-user"></i>
 					</div>
 				</div>
-				<div class="form-group form-md-line-input has-success form-md-floating ">
+				<div class="form-group form-md-line-input has-success form-md-floating-label">
 					<div class="input-icon right">
-						<input type="text" name="link" value="{{old('link', $model->link)}}" class="form-control">
-						<label for="form_control_1">Link slideshow</label>
-						<span class="help-block">Mời bạn nhập link slideshow</span>
-						<i class="icon-user"></i>
-					</div>
-				</div>
-				<div class="form-group form-md-line-input has-success form-md-floating ">
-					<div class="input-icon right">
-						<input type="text" name="status" value="{{old('status', $model->status)}}" class="form-control">
-						<label for="form_control_1">Trạng thái slideshow</label>
-						<span class="help-block">Mời bạn nhập trạng thái slideshow</span>
-						<i class="icon-user"></i>
-					</div>
-				</div>
-				<div class="form-group form-md-line-input has-success form-md-floating ">
-					<div class="input-icon right">
-						<input type="text" name="order_slide" value="{{old('order_slide', $model->order_slide)}}" class="form-control">
-						<label for="form_control_1">Số thứ tự slideshow</label>
-						<span class="help-block">Mời bạn nhập số thứ tự slideshow</span>
-						<i class="icon-user"></i>
+						<label for="form_control_1">Trạng thái slide</label>
+						<select name="status" class="form-control">
+							<option value="1">Hiển thị</option>
+							<option value="0">Ẩn</option>
+						</select>
 					</div>
 				</div>
 			</div>
 			<div class="form-actions noborder">
-				<button type="submit" class="btn blue">Gửi thông tin</button>
-				<button type="button" class="btn green"><a href="{{route('homeslide')}}" style="text-decoration: none; color: #fff;">Quay lại</a></button>
+				<button type="submit" class="btn btn-primary">Gửi thông tin</button>
+				<button type="button" class="btn btn-danger"><a href="{{route('homeslide')}}" style="text-decoration: none; color: #fff;">Quay lại</a></button>
 			</div>
 		</form>
 	</div>

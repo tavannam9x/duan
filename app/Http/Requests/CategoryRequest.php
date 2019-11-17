@@ -24,7 +24,7 @@ class CategoryRequest extends FormRequest
         $validate = [
             'name' => [
                 'required',
-                Rule::unique('categories')->ignore($this->id),
+                Rule::unique('product_category')->ignore($this->id),
                 'min:3',
                 'max:20'
             ],
