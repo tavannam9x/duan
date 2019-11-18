@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Item;
 use App\Models\Order;
+use Session;
+use Carbon\Carbon;
+use App\Models\User;
 
 class CartController extends Controller
 {
@@ -35,7 +38,7 @@ class CartController extends Controller
 
             $cart = [
                     $id => [
-                        "id" => $product->id,
+                        "idpro" => $product->id,
                         "name" => $product->name,
                         "quantity" => 1,
                         "price" => $product->price,
@@ -61,7 +64,7 @@ class CartController extends Controller
 
         // if item not exist in cart then add to cart with quantity = 1
         $cart[$id] = [
-            "id" => $product->id,
+            "idpro" => $product->id,
             "name" => $product->name,
             "quantity" => 1,
             "price" => $product->price,
@@ -104,16 +107,79 @@ class CartController extends Controller
         }
     }
 
+    public function listCart(Request $request)
+    {
+      if(!$request->has('keyword') || empty($request->keyword) ){
+            $orders = Order::paginate(5);
+        }else{
+            $kw = $request->keyword;
+            $orders = Order::where('name', 'like', "%$kw%")
+                            ->paginate(5);
+            $orders->withPath("?keyword=$kw");
+        }
+        return view('list-order', [
+                        'model' => $orders
+                    ]);
+    }
+
+    public function listDetail($id)
+    {
+        $model = Item::all()->where('order_id','=',$id);
+        if(!$model){
+            return redirect()->route('list_order');
+        }
+        return view('cart.cart_detail', compact('model'));
+    }
+
+    public function editCart($id){
+        $model = Order::find($id);
+        if(!$model){
+            return redirect()->route('homecart');
+        }
+        $shipper= User::all()->where('role','==','Shipper');
+        return view('cart.edit-form', compact('model','shipper'));
+    }
+
+    public function saveEdit(Request $request){
+        $model = Order::find($request->id);
+        $dt = Carbon::now();
+        if($request->status == 1){
+            $model->sent_date = $dt->toDateString();
+        }
+        $model->fill($request->all());
+        $model->save();
+        return redirect(route('homecart'));
+    }
+
+
+
     public function saveCart(Request $request)
     {
-      $model = new Item();
-        
-        $model->fill($request->all());
-        foreach ($model as $model_item) {
-            dd($model_item->quantity);
+      $cart = Session::get('cart');
+
+      $model= new Order();
+      $dt = Carbon::now();
+      if($request->order_date == null){
+            $model->order_date = $dt->toDateString();
         }
-        $model->save();
-        return redirect(route('cart.add'));
+      $model->fill($request->all());
+      $model->save();
+
+      foreach ($cart as $key => $value) {
+          $bill= new Item();
+          $bill->order_id=$model->id;
+          $bill->price=$value['price'];
+          $bill->quantity=$value['quantity'];
+          $bill->product_id=$value['idpro'];
+          $bill->image='../'.$value['photo'];
+          $bill->save();
+      }
+
+      Session::forget('cart');
+      return redirect(route('cart.add'));
     }
+
+
+
 
 }

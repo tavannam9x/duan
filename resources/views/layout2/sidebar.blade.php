@@ -51,7 +51,22 @@
 						<li>
 							<a href="{{route('user.add')}}">
 							<i class="fa fa-plus-square"></i>
-							Thêm sản phẩm</a>
+							Thêm tài khoản</a>
+						</li>
+					</ul>
+				</li>
+
+				<li>
+					<a href="javascript:;">
+					<i class="fa fa-group"></i>
+					<span class="title">Quản lý đơn hàng</span>
+					<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li>
+							<a href="{{route('homecart')}}">
+							<i class="fa fa-home"></i>
+							Danh sách tđơn hàng</a>
 						</li>
 					</ul>
 				</li>

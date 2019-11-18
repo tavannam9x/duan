@@ -57,7 +57,7 @@
                         <p> Nguồn gốc: Việt Nam </p>
                         <p> Khối lượng: 1kg/1hộp </p>
                         <p> {{$cate->short_desc}} </p>
-                        <button type="submit" class="btn btn-info"> Cho vào giỏ hàng </button>
+                        <button type="submit" class="btn btn-info"><a href="{{ url('add-to-cart/'.$cate->id) }}" style="color: white; text-decoration: none;"> Cho vào giỏ hàng</a> </button>
                         <p style="margin-top: 10px;"> Gọi đặt mua:
                             <span style="color: #80B435">0968 373 262</span> để nhanh chóng đặt hàng </p>
                     </div>

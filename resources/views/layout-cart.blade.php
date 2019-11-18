@@ -29,7 +29,6 @@
                             <p>Total: <span class="text-info">$ {{ $total }}</span></p>
                         </div>
                     </div>
- 
                     @if(session('cart'))
                         @foreach(session('cart') as $id => $details)
                             <div class="row cart-detail">

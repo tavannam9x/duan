@@ -54,6 +54,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapUser();
         $this->mapComment();
         $this->mapSlideImageRoutes();
+        $this->mapCartRoutes();
 
 
         //
@@ -169,6 +170,14 @@ class RouteServiceProvider extends ServiceProvider
              ->prefix('admin2/comment')
              ->namespace($this->namespace)
              ->group(base_path('routes/comment.php'));
+    }
+
+    protected function mapCartRoutes()
+    {
+        Route::middleware('web','auth','mod.check')
+             ->prefix('admin2/cart')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/cart.php'));
     }
 
     /**

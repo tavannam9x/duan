@@ -71,7 +71,6 @@
                             }
                             @endif
 
-
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Email
                                     <span style="color: red">*</span>

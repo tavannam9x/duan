@@ -37,7 +37,7 @@
             <div class="container">
                 <h2 title="Tin tức"> Giỏ Hàng </h2>
                 <div class="row">
-                <div class="col-8">
+                <div class="col-9">
                     @if(session('success'))
                         <div class="alert alert-success">
                             {{ session('success') }}
@@ -48,8 +48,8 @@
                         <thead>
                         <tr>
                             <th style="width:10%">Ảnh sản phẩm</th>
-                            <th style="width:15%">Tên sản phẩm</th>
-                            <th style="width:10%">Đơn giá</th>
+                            <th style="width:20%">Tên sản phẩm</th>
+                            <th style="width:18%">Đơn giá</th>
                             <th style="width:10%">Số lượng</th>
                             <th style="width:20%" class="text-center">Thành tiền</th>
                             <th style="width:10%"></th>
@@ -112,7 +112,7 @@
 
                                                 <input type="hidden" name="price" value="{{ $details['price'] }}">
                                                 <input type="hidden" name="image" value="{{ $details['photo'] }}">
-                                                <input type="hidden" name="product_id" value="{{ $details['id'] }}">
+                                                <input type="hidden" name="product_id" value="{{ $details['idpro'] }}">
                                                 <input type="hidden" name="quantity" value="{{ $details['quantity'] }}">
                                                 <input type="hidden" name="total_price" value="{{ $total }}">
                                                     
@@ -153,16 +153,17 @@
                                         <div class="form-group">
                                             <textarea class="form-control" name="note" id="exampleFormControlTextarea1" rows="3" placeholder=" Ghi chú "></textarea>
                                         </div>
+
                                         <input type="hidden" name="status" value="0">
-                                        <div class="thanhtoan" style="margin-bottom: 10px; max-width: 20%; font-family: 'Times New Roman', Times, serif; background: #80B435; text-align: center;padding: 10px; text-transform: uppercase; color: #fff;">
+                                       
                                             <button type="submit">Gửi đơn hàng</button>
-                                        </div>
+                                        
                                     </form>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <table class="table">
                         <thead class="thead-dark">
                             <tr>
@@ -179,7 +180,7 @@
 
                                         <?php $total += $details['price'] * $details['quantity'] ?>
                                         <tr class="order-total" style="margin-bottom: 10px; display: inline-block;">
-                                            <th style="width: 200px;"> Tổng cộng </th>
+                                            <th style="width: 150px;"> Tổng cộng </th>
                                             <td data-title="Tổng cộng">
                                                 <span> {{ $details['price'] * $details['quantity'] }} VNĐ </span>
                                             </td>

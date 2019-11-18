@@ -9,6 +9,7 @@ use App\Models\Contact;
 use App\Models\Comment;
 use App\Models\User;
 use App\Models\Slideshow;
+use App\Models\Order;
 
 use App\Models\Slideshowchildren;
 use DB;
@@ -30,9 +31,6 @@ class TrangchuController extends Controller
                 $slideshow= Slideshowchildren::all()->rand(1);
             }      
         }
-
-
-
         $model = DB::table('product')->orderBy('views', 'desc')->take(5)->get();
         $post = DB::table('post')->where('status',2)->orderBy('views', 'desc')->take(3)->get();
         return view('home', compact('category_product','category_post','model','post','slideshow','slide'));
@@ -121,6 +119,24 @@ class TrangchuController extends Controller
         $category_post= Category::where('category_type','=','1')->get();
 
         return view('gioithieu', compact('category_product','category_post'));
+    }
+
+    //Lịch sử mua hàng
+    public function history($id){
+        $category_product= Category::where('category_type','=','0')->get();
+        $category_post= Category::where('category_type','=','1')->get();
+        $order= Order::all()->where('user_id','!=',$id);
+        return view('lichsumuahang', compact('category_product','category_post','order'));
+    }
+
+    //Lưu rate
+    public function saveRate(Requests $request){
+        $category_product= Category::where('category_type','=','0')->get();
+        $category_post= Category::where('category_type','=','1')->get();
+        $model = User::find($request->id);
+        $model->fill($request->all());
+        $model->save();
+        return view('lichsumuahang', compact('category_product','category_post','order'));
     }
 
     // Xóa

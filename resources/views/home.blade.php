@@ -177,7 +177,7 @@
                             <a href="{{route('chitietsp', ['id' => $spnb->id])}}" class="icon one" title="Xem chi tiết">
                                 <i style="font-size: 14px;" class="fa fa-search" aria-hidden="true"></i>
                             </a>
-                            <a href="cart.html" class="icon two" title="Giỏ hàng">
+                            <a href="{{ url('add-to-cart/'.$spnb->id) }}" class="icon two" title="Giỏ hàng">
                                 <i style="font-size: 14px;" class="fa fa-cart-plus" aria-hidden="true"></i>
                             </a>
                         </div>

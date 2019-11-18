@@ -87,6 +87,10 @@ Route::get('/dangnhap', 'DangkiController@Login')->name('dangnhap.add');
 Route::post('/dangnhap', 'DangkiController@postLogin');
 Route::get('/dangxuat', 'DangkiController@logoutus')->name('logoutUser');
 
+Route::get('lichsu/{id}', 'TrangchuController@history')->name('lichsumuahang');
+//Route::post('lichsu/{id}', 'TrangchuController@saveRate');
+
+
 
 Route::get('cart', 'CartController@cart')->name('cart.add');
 Route::post('cart', 'CartController@saveCart');
