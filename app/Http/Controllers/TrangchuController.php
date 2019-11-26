@@ -147,4 +147,6 @@ class TrangchuController extends Controller
     //     $post->delete();
     //     return redirect(route('homehome'));
     // }
+
+    
 }

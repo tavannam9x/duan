@@ -119,7 +119,7 @@
                 @endif
                 <button type="submit" name="">Đăng nhập</button>
                 <p>
-                    <a href="home.html"> Trở về </a>
+                    <a href="{{ URL::previous() }}"> Trở về </a>
                 </p>
             </form>
         </div>

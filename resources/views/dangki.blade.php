@@ -75,7 +75,7 @@ use App\Http\Requests\UserRequest;
                 <input type="hidden" name="role" value="Member">
                 <button type="submit" name="">Đăng kí</button>
                 <p>
-                    <a href="home.html"> Trở về </a>
+                    <a href="{{ URL::previous() }}"> Trở về </a>
                 </p>
             </form>
         </div>
