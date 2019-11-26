@@ -32,7 +32,7 @@
                         <a href="{{route('dangnhap.add')}}" title="đăng nhập"> Đăng nhập </a>
                     </li>
                     <li>
-                        <a href="dangki.html" title="đăng kí"> Đăng kí </a>
+                        <a href="{{route('dangki.add')}}" title="đăng kí"> Đăng kí </a>
                     </li>
                     @endif
                 </ul>

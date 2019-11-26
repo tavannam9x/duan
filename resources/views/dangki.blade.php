@@ -56,10 +56,22 @@ use App\Http\Requests\UserRequest;
             <h1 style="margin-bottom: 20px;"> Tạo tài khoản </h1>
             <form action="{{route('dangki.add')}}" method="post" enctype="multipart/form-data">
                 @csrf
-                <input type="name" style="font-size: 13px;" value="" name="name" placeholder="Tên">
-                <input type="email" style="font-size: 13px;" value="" name="email" placeholder="Email">
+                <input type="text" style="font-size: 13px;" value="{{old('name')}}" name="name" placeholder="Tên">
+                @if(count($errors) > 0)
+                    <small><span style="color: black">{{$errors->first('name')}}</span></small>
+                @endif
+                <input type="text" style="font-size: 13px;" value="{{old('email')}}" name="email" placeholder="Email">
+                @if(count($errors) > 0)
+                    <small><span style="color: black">{{$errors->first('email')}}</span></small>
+                @endif
                 <input type="password" style="font-size: 13px;" value="" name="password" placeholder="Mật khẩu">
-                <input type="cf_password" style="font-size: 13px;" value="" placeholder="Nhập lại mật khẩu">
+                @if(count($errors) > 0)
+                    <small><span style="color: black">{{$errors->first('password')}}</span></small>
+                @endif
+                <input type="password" name="repassword" style="font-size: 13px;" value="" placeholder="Nhập lại mật khẩu">
+                @if(count($errors) > 0)
+                    <small><span style="color: black">{{$errors->first('repassword')}}</span></small>
+                @endif
                 <input type="hidden" name="role" value="Member">
                 <button type="submit" name="">Đăng kí</button>
                 <p>

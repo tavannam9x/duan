@@ -122,11 +122,13 @@ class TrangchuController extends Controller
     }
 
     //Lịch sử mua hàng
-    public function history($id){
+    public function history(Request $request){
+
+        $orders = User::find($request->id)->orders;
         $category_product= Category::where('category_type','=','0')->get();
         $category_post= Category::where('category_type','=','1')->get();
-        $order= Order::all()->where('user_id','!=',$id);
-        return view('lichsumuahang', compact('category_product','category_post','order'));
+    
+        return view('lichsumuahang', compact('category_product','category_post','orders'));
     }
 
     //Lưu rate

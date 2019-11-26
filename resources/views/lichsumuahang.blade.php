@@ -50,7 +50,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($order as $ls)
+                        @foreach($orders as $ls)
                         <tr>
                             <td>{{$ls->phone_number}}</td>
                             <td style="width: 20%">{{$ls->order_address}}</td>

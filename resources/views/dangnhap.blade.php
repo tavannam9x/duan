@@ -112,7 +112,7 @@
             <h1 style="margin-bottom: 20px;"> Đăng nhập </h1>
             <form action="{{route('dangnhap.add')}}" method="post" enctype="multipart/form-data">
                 @csrf
-                <input type="email" style="font-size: 13px;" value="" name="email" placeholder="Email">
+                <input type="text" style="font-size: 13px;" value="{{old('email')}}" name="email" placeholder="Email">
                 <input type="password" style="font-size: 13px;" value="" name="password" placeholder="Mật khẩu">
                 @if (session('errmsg'))
                   <p class="text-danger">{{session('errmsg')}}</p>

@@ -933,7 +933,7 @@ h1 {
     width: 100%;
     margin-bottom: 20px;
 }
-.loginbox input[type="name"],input[type="fw_password"], input[type="password"], input[type="email"] {
+.loginbox input[type="text"],input[type="password"]{
     border: none;
     border-bottom: 1px solid #fff;
     background: transparent;
