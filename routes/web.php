@@ -29,7 +29,7 @@ Route::group(['middleware' => 'auth'], function(){
 // 		$kw= $request->keyword;
 // 		$users=App\User::where('name', 'like', "%$kw%")->paginate(3);
 // 		$users->withPath("?keyword=$kw");
-// 	}	
+// 	}
 
 // 	//2. thực hiện câu lệnh select * form posts where title lke keyword
 
@@ -108,48 +108,6 @@ Route::any('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('403', function(){
 	return view('auth403');
 })->name('auth.403');
-// Route::get('add-new', function(Request $request){
-// 	$post = new App\Post();
-// 	//dd($request->all());
-// 	$post->fill($request->all());
-// 	$post->image='images/'.$post->image;
-// 	$post->save();
-// 	return redirect()->route('view');
-// });
 
-// Route::get('edit', function(Request $request){
-// 	$post = App\Post::find($request->id);
-// 	return view ('post-edit', ['them' => $post]);
-// 	});
-
-// Route::post('edit-new', function(Request $request){
-// 	$post = App\Post::find($request->id);
-// 	$post->fill($request->all());
-// 	$post->image='images/'.$post->image;
-// 	$post->save();
-// 	return redirect()->route('view');
-// });
-
-
-
-
-// Route::get('test-layout', function () {
-//     return view('layouts.main');
-// });
-
-// Route::get('test-layout2', function () {
-//     return view('layout2.main');
-// });
-
-// Route::get('admin', function () {
-//     return view('home');
-// });
-//Route::view('cp-login', 'sslogin-page')->name('login');
-//Route::get('test', function () {
-    //return view('welcome');
-	//return route('login');
-//});
-//Route::get('detail/{pId}/{price?}', function(
-//$pId, $price=900){
-	//return $pId . '-' . $price;
-//});
+Route::post('coupon','CouponController@store')->name('coupon.store');
+Route::post('delete-coupon','CouponController@destroy')->name('coupon.destroy');

@@ -14,29 +14,29 @@
 
 <body>
 
-    <!-- Main-Header -->
-    <div class="main-header">
+<!-- Main-Header -->
+<div class="main-header">
 
-       @include('shop.header')
-    </div>
+    @include('shop.header')
+</div>
 
-    <!-- Breadcrumb background  -->
-    <!-- <div class="bread-crumb-background">
-        <div class="container-fluid">
-            <div class="directional">
-                <div class="container">
-                    
-                </div>
+<!-- Breadcrumb background  -->
+<!-- <div class="bread-crumb-background">
+    <div class="container-fluid">
+        <div class="directional">
+            <div class="container">
+
             </div>
         </div>
-    </div> -->
+    </div>
+</div> -->
 
-    <!-- Main blog -->
-    <div class="main-content-blog">
+<!-- Main blog -->
+<div class="main-content-blog">
+    <div class="container">
         <div class="container">
-            <div class="container">
-                <h2 title="Tin tức"> Giỏ Hàng </h2>
-                <div class="row">
+            <h2 title="Tin tức"> Giỏ Hàng </h2>
+            <div class="row">
                 <div class="col-9">
                     @if(session('success'))
                         <div class="alert alert-success">
@@ -67,7 +67,9 @@
                                 <tr>
                                     <td data-th="Product">
                                         <div class="row">
-                                            <div class="col-sm-3 hidden-xs"><img src="{{ $details['photo'] }}" width="100" height="100" class="img-responsive"/></div>
+                                            <div class="col-sm-3 hidden-xs"><img src="{{ $details['photo'] }}"
+                                                                                 width="100" height="100"
+                                                                                 class="img-responsive"/></div>
                                         </div>
                                     </td>
                                     <td>
@@ -77,12 +79,17 @@
                                     </td>
                                     <td data-th="Price">{{ $details['price'] }} VNĐ</td>
                                     <td data-th="Quantity">
-                                        <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity" />
+                                        <input type="number" value="{{ $details['quantity'] }}"
+                                               class="form-control quantity"/>
                                     </td>
-                                    <td data-th="Subtotal" class="text-center">{{ $details['price'] * $details['quantity'] }} VNĐ</td>
+                                    <td data-th="Subtotal"
+                                        class="text-center">{{ $details['price'] * $details['quantity'] }} VNĐ
+                                    </td>
                                     <td class="actions" data-th="">
-                                        <button class="btn btn-info btn-sm update-cart" data-id="{{ $id }}"><i class="fa fa-refresh"></i></button>
-                                        <button class="btn btn-danger btn-sm remove-from-cart" data-id="{{ $id }}"><i class="fa fa-trash-o"></i></button>
+                                        <button class="btn btn-info btn-sm update-cart" data-id="{{ $id }}"><i
+                                                class="fa fa-refresh"></i></button>
+                                        <button class="btn btn-danger btn-sm remove-from-cart" data-id="{{ $id }}"><i
+                                                class="fa fa-trash-o"></i></button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -91,9 +98,17 @@
                         </tbody>
                         <tfoot>
                         <tr>
-                            <td><a href="{{ url('/') }}" class="btn btn-warning" style="font-size: 15px; width: 100px;"><i class="fa fa-angle-left" ></i> Tiếp tục mua hàng</a></td>
+                            <td><a href="{{ url('/') }}" class="btn btn-warning" style="font-size: 15px; width: 100px;"><i
+                                        class="fa fa-angle-left"></i> Tiếp tục mua hàng</a></td>
                             <td colspan="3" class="hidden-xs"></td>
-                            <td class="hidden-xs text-center" style="font-size: 15px;"><strong>Tổng tiền: {{ $total }} VNĐ</strong></td>
+                            <td class="hidden-xs text-center" style="font-size: 15px;"><strong>Tổng tiền:
+                                    @if (session()->has('coupon'))
+                                        {{ $total - ($total*session()->get('coupon')['discount']/100)}}
+                                    @else
+                                        {{$total}}
+                                    @endif
+
+                                    VNĐ</strong></td>
                         </tr>
                         </tfoot>
                     </table>
@@ -101,64 +116,75 @@
                         <div class="row">
                             <div class="col-md-12" style="padding: 10px 0; margin-top: 20px;">
                                 <h4> Thông tin mua hàng </h4>
-                                    <form action="{{route('cart.add')}}" method="post" class="form-pay">
-                                       @csrf
-                                        <?php $total = 0 ?>
+                                <form action="{{route('cart.add')}}" method="post" class="form-pay">
+                                    @csrf
+                                    <?php $total = 0 ?>
 
-                                        @if(session('cart'))
-                                            @foreach(session('cart') as $id => $details)
+                                    @if(session('cart'))
+                                        @foreach(session('cart') as $id => $details)
 
-                                                <?php $total += $details['price'] * $details['quantity'] ?>
+                                            <?php $total += $details['price'] * $details['quantity'] ?>
 
-                                                <input type="hidden" name="price" value="{{ $details['price'] }}">
-                                                <input type="hidden" name="image" value="{{ $details['photo'] }}">
-                                                <input type="hidden" name="product_id" value="{{ $details['idpro'] }}">
-                                                <input type="hidden" name="quantity" value="{{ $details['quantity'] }}">
-                                                <input type="hidden" name="total_price" value="{{ $total }}">
-                                                    
-                                            @endforeach
-                                        @endif
+                                            <input type="hidden" name="price" value="{{ $details['price'] }}">
+                                            <input type="hidden" name="image" value="{{ $details['photo'] }}">
+                                            <input type="hidden" name="product_id" value="{{ $details['idpro'] }}">
+                                            <input type="hidden" name="quantity" value="{{ $details['quantity'] }}">
+                                            <input type="hidden" name="total_price" value="{{ $total }}">
 
-                                        @if(Illuminate\Support\Facades\Auth::check())
+                                        @endforeach
+                                    @endif
 
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1"> Họ tên
-                                                    <span style="color: red">*</span>
-                                                </label>
-                                                <input type="text" class="form-control" value="{{ Illuminate\Support\Facades\Auth::user()->name }}" id="exampleInputEmail1" name="name" aria-describedby="emailHelp" placeholder="" readonly="true">
-                                            </div>
-                                            <div class="form-group">
-                                            <input type="number" name="phone_number" value="{{ Illuminate\Support\Facades\Auth::user()->phone_number }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder=" Số điện thoại ">
-                                            </div>
+                                    @if(Illuminate\Support\Facades\Auth::check())
 
-                                            <input type="hidden" name="user_id" value="{{ Illuminate\Support\Facades\Auth::user()->id }}">
-                                            @else
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1"> Họ tên
-                                                    <span style="color: red">*</span>
-                                                </label>
-                                                <input type="text" class="form-control" id="exampleInputEmail1" name="name" aria-describedby="emailHelp" placeholder="">
-                                                @if($errors->first('name'))
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1"> Họ tên
+                                                <span style="color: red">*</span>
+                                            </label>
+                                            <input type="text" class="form-control"
+                                                   value="{{ Illuminate\Support\Facades\Auth::user()->name }}"
+                                                   id="exampleInputEmail1" name="name" aria-describedby="emailHelp"
+                                                   placeholder="" readonly="true">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="number" name="phone_number"
+                                                   value="{{ Illuminate\Support\Facades\Auth::user()->phone_number }}"
+                                                   class="form-control" id="exampleInputEmail1"
+                                                   aria-describedby="emailHelp" placeholder=" Số điện thoại ">
+                                        </div>
+
+                                        <input type="hidden" name="user_id"
+                                               value="{{ Illuminate\Support\Facades\Auth::user()->id }}">
+                                    @else
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1"> Họ tên
+                                                <span style="color: red">*</span>
+                                            </label>
+                                            <input type="text" class="form-control" id="exampleInputEmail1" name="name"
+                                                   aria-describedby="emailHelp" placeholder="">
+                                            @if($errors->first('name'))
                                                 <span class="text-danger">{{$errors->first('name')}}</span>
-                                                @endif
-                                            </div>
-                                            
-                                        @endif
-
-
-                                        <div class="form-group">
-                                            <input type="text" name="order_address" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder=" Địa chỉ ">
+                                            @endif
                                         </div>
 
-                                        <div class="form-group">
-                                            <textarea class="form-control" name="note" id="exampleFormControlTextarea1" rows="3" placeholder=" Ghi chú "></textarea>
-                                        </div>
+                                    @endif
 
-                                        <input type="hidden" name="status" value="0">
-                                       
-                                            <button type="submit">Gửi đơn hàng</button>
-                                        
-                                    </form>
+
+                                    <div class="form-group">
+                                        <input type="text" name="order_address" class="form-control"
+                                               id="exampleInputEmail1" aria-describedby="emailHelp"
+                                               placeholder=" Địa chỉ ">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <textarea class="form-control" name="note" id="exampleFormControlTextarea1"
+                                                  rows="3" placeholder=" Ghi chú "></textarea>
+                                    </div>
+
+                                    <input type="hidden" name="status" value="0">
+
+                                    <button type="submit">Gửi đơn hàng</button>
+
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -166,40 +192,62 @@
                 <div class="col-md-3">
                     <table class="table">
                         <thead class="thead-dark">
-                            <tr>
-                                <th> Tổng tiền đơn hàng </th>
-                            </tr>
+                        <tr>
+                            <th> Tổng tiền đơn hàng</th>
+                        </tr>
                         </thead>
                     </table>
                     <table>
                         <tbody>
-                            <?php $total = 0 ?>
+                        <?php $total = 0 ?>
 
-                                @if(session('cart'))
-                                    @foreach(session('cart') as $id => $details)
+                        @if(session('cart'))
+                            @foreach(session('cart') as $id => $details)
 
-                                        <?php $total += $details['price'] * $details['quantity'] ?>
-                                        <tr class="order-total" style="margin-bottom: 10px; display: inline-block;">
-                                            <th style="width: 150px;"> Tổng cộng </th>
-                                            <td data-title="Tổng cộng">
-                                                <span> {{ $details['price'] * $details['quantity'] }} VNĐ </span>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                <?php $total += $details['price'] * $details['quantity'] ?>
+                                <tr class="order-total" style="margin-bottom: 10px; display: inline-block;">
+                                    <th style="width: 150px;"> Tổng cộng</th>
+                                    <td data-title="Tổng cộng">
+                                        <span> {{ $details['price'] * $details['quantity'] }} VNĐ </span>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            <tr>
+                                @if (session()->has('coupon'))
+                                    <tr class="order-total" style="margin-bottom: 10px; display: inline-block;">
+                                        <th style="width: 150px;"> Mã giảm giá({{session()->get('coupon')['name']}})</th>
+                                        <td data-title="Tổng cộng">
+                                                <span> -{{session()->get('coupon')['discount']}} % </span>
+                                        </td>
+                                    </tr>
+                                    <form action="{{route('coupon.destroy')}}" method="post">
+                                        @csrf
+                                        <button type="submit">Remove</button>
+                                    </form>
                                 @endif
+                            </tr>
+                        @endif
                         </tbody>
                     </table>
-                    <table class="table">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th> Phiếu ưu đãi </th>
-                            </tr>
-                        </thead>
-                    </table>
-                    <input style="width: 100%;height: 2.507em; margin-bottom: 10px; border: 1px solid #ddd;box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);padding: 0 5px;" type="text" placeholder="Mã ưu đãi">
-                    <div class="thanhtoan" style="margin-bottom: 10px; max-width: 100%; font-family: 'Times New Roman', Times, serif; background: #80B435; text-align: center;padding: 10px; text-transform: uppercase; color: #fff;">
-                        <a href="#">Áp dụng ưu đãi</a>
-                    </div>
+                    <br>
+                    @if(Session::has('errCoupon'))
+                        <p class="alert alert-danger">{{ Session::get('errCoupon') }}</p>
+                    @endif
+                    @if(Session::has('successCoupon'))
+                        <p class="alert alert-success">{{ Session::get('successCoupon') }}</p>
+                    @endif
+                    <form action="{{route('coupon.store')}}" method="post">
+                        @csrf
+                        <input
+                            style="width: 100%;height: 2.507em; margin-bottom: 10px; border: 1px solid #ddd;box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);padding: 0 5px;"
+                            type="text" name="coupon_code" placeholder="Mã ưu đãi">
+                        <div class="thanhtoan"
+                             style="margin-bottom: 10px; max-width: 100%; font-family: 'Times New Roman', Times, serif; background: #80B435; text-align: center;padding: 10px; text-transform: uppercase; color: #fff;">
+                            <a href="#">
+                                <button>Áp dụng ưu đãi</button>
+                            </a>
+                        </div>
+                    </form>
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
@@ -215,56 +263,60 @@
                 </div>
             </div>
         </div>
-        </div>
     </div>
+</div>
 
-    <!-- Main post banner -->
-    <div class="main-banner-post">
-        <img src="image/banner-baiviet.png" width="100%">
-        <div class="main-banner-post-title">
-        </div>
+<!-- Main post banner -->
+<div class="main-banner-post">
+    <img src="image/banner-baiviet.png" width="100%">
+    <div class="main-banner-post-title">
     </div>
-    </div>
+</div>
+</div>
 
 
-    <script type="text/javascript">
+<script type="text/javascript">
 
-        $(".update-cart").click(function (e) {
-           e.preventDefault();
+    $(".update-cart").click(function (e) {
+        e.preventDefault();
 
-           var ele = $(this);
+        var ele = $(this);
 
-            $.ajax({
-               url: '{{ url('update-cart') }}',
-               method: "patch",
-               data: {_token: '{{ csrf_token() }}', id: ele.attr("data-id"), quantity: ele.parents("tr").find(".quantity").val()},
-               success: function (response) {
-                   window.location.reload();
-               }
-            });
-        });
-
-        $(".remove-from-cart").click(function (e) {
-            e.preventDefault();
-
-            var ele = $(this);
-
-            if(confirm("Are you sure")) {
-                $.ajax({
-                    url: '{{ url('remove-from-cart') }}',
-                    method: "DELETE",
-                    data: {_token: '{{ csrf_token() }}', id: ele.attr("data-id")},
-                    success: function (response) {
-                        window.location.reload();
-                    }
-                });
+        $.ajax({
+            url: '{{ url('update-cart') }}',
+            method: "patch",
+            data: {
+                _token: '{{ csrf_token() }}',
+                id: ele.attr("data-id"),
+                quantity: ele.parents("tr").find(".quantity").val()
+            },
+            success: function (response) {
+                window.location.reload();
             }
         });
+    });
 
-    </script>
+    $(".remove-from-cart").click(function (e) {
+        e.preventDefault();
+
+        var ele = $(this);
+
+        if (confirm("Are you sure")) {
+            $.ajax({
+                url: '{{ url('remove-from-cart') }}',
+                method: "DELETE",
+                data: {_token: '{{ csrf_token() }}', id: ele.attr("data-id")},
+                success: function (response) {
+                    window.location.reload();
+                }
+            });
+        }
+    });
+
+</script>
 
 
-    <!-- Main footer -->
-    @include('shop.brand')
+<!-- Main footer -->
+@include('shop.brand')
 
 </html>
