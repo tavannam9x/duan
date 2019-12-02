@@ -32,6 +32,7 @@
 </div> -->
 
 <!-- Main blog -->
+
 <div class="main-content-blog">
     <div class="container">
         <div class="container">
@@ -103,7 +104,7 @@
                             <td colspan="3" class="hidden-xs"></td>
                             <td class="hidden-xs text-center" style="font-size: 15px;"><strong>Tổng tiền:
                                     @if (session()->has('coupon'))
-                                        {{ $total - ($total*session()->get('coupon')['discount']/100)}}
+                                        {{ $total = $total - ($total*session()->get('coupon')['discount']/100)}}
                                     @else
                                         {{$total}}
                                     @endif
@@ -118,18 +119,13 @@
                                 <h4> Thông tin mua hàng </h4>
                                 <form action="{{route('cart.add')}}" method="post" class="form-pay">
                                     @csrf
-                                    <?php $total = 0 ?>
-
                                     @if(session('cart'))
                                         @foreach(session('cart') as $id => $details)
-
-                                            <?php $total += $details['price'] * $details['quantity'] ?>
-
                                             <input type="hidden" name="price" value="{{ $details['price'] }}">
                                             <input type="hidden" name="image" value="{{ $details['photo'] }}">
                                             <input type="hidden" name="product_id" value="{{ $details['idpro'] }}">
                                             <input type="hidden" name="quantity" value="{{ $details['quantity'] }}">
-                                            <input type="hidden" name="total_price" value="{{ $total }}">
+                                            <input type="hidden" name="total_price" value="{{  $total }}">
 
                                         @endforeach
                                     @endif
@@ -233,14 +229,23 @@
                     @if(Session::has('errCoupon'))
                         <p class="alert alert-danger">{{ Session::get('errCoupon') }}</p>
                     @endif
+                    @if(Session::has('errPrice'))
+                        <p class="alert alert-danger">{{ Session::get('errPrice') }}</p>
+                    @endif
+                    @if(Session::has('removeCoupon'))
+                        <p class="alert alert-success">{{ Session::get('removeCoupon') }}</p>
+                    @endif
                     @if(Session::has('successCoupon'))
                         <p class="alert alert-success">{{ Session::get('successCoupon') }}</p>
+                    @endif
+                    @if(count($errors) > 0)
+                        <p class="alert alert-danger">{{$errors->first('coupon_code')}}</p>
                     @endif
                     <form action="{{route('coupon.store')}}" method="post">
                         @csrf
                         <input
                             style="width: 100%;height: 2.507em; margin-bottom: 10px; border: 1px solid #ddd;box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);padding: 0 5px;"
-                            type="text" name="coupon_code" placeholder="Mã ưu đãi">
+                            type="text" name="coupon_code" value="{{old('coupon_code')}}" placeholder="Mã ưu đãi">
                         <div class="thanhtoan"
                              style="margin-bottom: 10px; max-width: 100%; font-family: 'Times New Roman', Times, serif; background: #80B435; text-align: center;padding: 10px; text-transform: uppercase; color: #fff;">
                             <a href="#">
