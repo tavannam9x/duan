@@ -11,6 +11,7 @@ class CouponController extends Controller
 {
     public function store(CouponRequest $request)
     {
+        dd($request->all());
         $cart = Session()->get('cart');
         if (session('cart')) {
             $total = 0;
@@ -18,14 +19,16 @@ class CouponController extends Controller
                 $total += $c['price'] * $c['quantity'];
             }
         }
+
         $coupon = Coupon::where('code', $request->coupon_code)->first();
-        if (!$coupon) {
-            return back()->with('errCoupon', 'Ma giam gia khong ton tai');
-        }
+//        if (!$coupon) {
+//            return back()->with('errCoupon', 'Ma giam gia khong ton tai');
+//        }
         if ($total < $coupon->minimum) {
             return back()->with('errPrice', "Đơn hàng phải trên $coupon->minimum VNĐ để được ưu đãi");
         } else {
             session()->put('coupon', [
+                'id'=>$coupon->id,
                 'name' => $coupon->code,
                 'discount' => $coupon->percent_off,
                 'minimun' => $coupon->minimum,

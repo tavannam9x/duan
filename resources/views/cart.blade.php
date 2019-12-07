@@ -239,13 +239,14 @@
                         <p class="alert alert-success">{{ Session::get('successCoupon') }}</p>
                     @endif
                     @if(count($errors) > 0)
-                        <p class="alert alert-danger">{{$errors->first('coupon_code')}}</p>
+                        <p class="alert alert-danger">{{$errors->first('current_date')}}</p>
                     @endif
                     <form action="{{route('coupon.store')}}" method="post">
                         @csrf
                         <input
                             style="width: 100%;height: 2.507em; margin-bottom: 10px; border: 1px solid #ddd;box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);padding: 0 5px;"
                             type="text" name="coupon_code" value="{{old('coupon_code')}}" placeholder="Mã ưu đãi">
+                        <input type="datetime-local" name="current_date" value="{{\Carbon\Carbon::now('Asia/Ho_Chi_Minh')->toDateTimeLocalString()}}"/>
                         <div class="thanhtoan"
                              style="margin-bottom: 10px; max-width: 100%; font-family: 'Times New Roman', Times, serif; background: #80B435; text-align: center;padding: 10px; text-transform: uppercase; color: #fff;">
                             <a href="#">

@@ -23,20 +23,17 @@
 <script src="../../../adminltes/assets/admin/layout2/scripts/quick-sidebar.js" type="text/javascript"></script>
 <script src="../../../adminltes/assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
 <script src="../../../adminltes/assets/admin/pages/scripts/tasks.js" type="text/javascript"></script>
-<script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js"></script>
-
-
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
 
 <!-- END PAGE LEVEL SCRIPTS -->
 <script type="text/javascript">
-jQuery(document).ready(function() {    
+jQuery(document).ready(function() {
    Metronic.init(); // init metronic core componets
    Layout.init(); // init layout
    Demo.init(); // init demo features
    QuickSidebar.init(); // init quick sidebar
     Index.init(); // init index page
- Tasks.initDashboardWidget(); // init tash dashboard widget  
+ Tasks.initDashboardWidget(); // init tash dashboard widget
 });
 </script>
 <script type="text/javascript">
@@ -52,7 +49,7 @@ jQuery(document).ready(function() {
     .then((willDelete) => {
       if (willDelete) {
         window.location.href = removeUrl;
-      } 
+      }
     });
   });
 </script>

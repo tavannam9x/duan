@@ -61,11 +61,7 @@ Route::group(['middleware' => 'auth'], function(){
 // Route::get('category/edit/{id}', 'CategoryController@editForm')->name('category.edit');
 // Route::post('category/edit/{id}', 'CategoryController@saveEdit');
 // Route::get('category/deletePost/{id}', 'CategoryController@deletePost')->name('category.remove');
-Route::get('/admin2', function(){
-	return view('admin2');
-})->name('homeadmin');
-
-
+    Route::get('admin2','AdminChartController@mostViewProduct')->name('homeadmin');
 });
 
 
